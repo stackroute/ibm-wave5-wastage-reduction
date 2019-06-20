@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.stackroute</groupId>
-		<artifactId>your-product-name</artifactId>
+		<artifactId>ibm-wave5-wastage-reduction</artifactId>
 		<version>1.0.0</version>
 	</parent>
 	<groupId>com.stackroute</groupId>
@@ -29,6 +29,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-security</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>io.jsonwebtoken</groupId>-->
+<!--			<artifactId>jjwt</artifactId>-->
+<!--			<version>0.9.0</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<dependencyManagement>

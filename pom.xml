@@ -5,8 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute</groupId>
-	<artifactId>your-product-name</artifactId>
+	<artifactId>ibm-wave5-wastage-reduction</artifactId>
 	<version>1.0.0</version>
+	<name>ibm-wave5-wastage-reduction</name>
 	<packaging>pom</packaging>
 
 	<parent>
@@ -29,6 +30,8 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
 		<module>zuul-api</module>
+		<module>registration-server</module>
+		<module>authentication-server</module>
 	</modules>
 
 	<dependencies>
@@ -68,7 +71,12 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.8.1</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.1.5.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 	<dependencyManagement>
 		<dependencies>
