@@ -52,3 +52,9 @@ services:
     hostname: localhost
     ports:
       - 8000:8000
+  mysql:
+    image: mysql:4.1
+    restart: always
+    hostname: localhost
+    ports:
+      - 3306:3306
