@@ -30,3 +30,25 @@ services:
     hostname: localhost
     ports:
       - 8080:8080
+
+  authentication-server:
+    build: authentication-server/
+    depends_on:
+      - zuul-api
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: authentication-server
+    ports:
+      - 8070:8070
+
+  registration-service:
+    build: registration-server/
+    depends_on:
+      - zuul-api
+    restart: always
+    network_mode: "host"
+    image: registration-service
+    hostname: localhost
+    ports:
+      - 8000:8000
