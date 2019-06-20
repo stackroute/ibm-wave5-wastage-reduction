@@ -29,7 +29,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8090:8090
+      - 8060:8060
 
   authentication-server:
     image: authentication-server:1.0
