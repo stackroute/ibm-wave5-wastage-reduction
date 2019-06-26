@@ -1,6 +1,6 @@
-package com.stackroute.registration.registrationserver.repository;
+package com.stackroute.registrationserver.repository;
 
-import com.stackroute.registration.registrationserver.domain.Charity;
+import com.stackroute.registrationserver.domain.Charity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

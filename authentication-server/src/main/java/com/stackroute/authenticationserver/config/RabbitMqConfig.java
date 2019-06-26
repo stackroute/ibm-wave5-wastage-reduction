@@ -1,6 +1,6 @@
 package com.stackroute.authenticationserver.config;
 
-import com.stackroute.authenticationserver.model.Users;
+import com.stackroute.rabbitmq.model.Users;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.DefaultClassMapper;
@@ -16,9 +16,14 @@ import java.util.Map;
 public class RabbitMqConfig {
 
     @Bean
-    public MessageConverter jsonMessageConverter() {
-        return new Jackson2JsonMessageConverter();
+    public MessageConverter jsonMessageConverter()
+    {
+        System.out.println("inside jsonMessageConverter");
+        Jackson2JsonMessageConverter jsonMessageConverter = new Jackson2JsonMessageConverter();
+        jsonMessageConverter.setClassMapper(classMapper());
+        return jsonMessageConverter;
     }
+
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
@@ -33,9 +38,9 @@ public class RabbitMqConfig {
         System.out.println("inside classMapper");
         DefaultClassMapper classMapper = new DefaultClassMapper();
         Map<String, Class<?>> idClassMapping = new HashMap<>();
-        idClassMapping.put("com.stackroute.authenticationserver.model.Users", Users.class);
-
+        idClassMapping.put("com.stackroute.rabbitmq.model.User", Users.class);
         classMapper.setIdClassMapping(idClassMapping);
+        classMapper.setTrustedPackages("*");
 
         return classMapper;
     }

@@ -1,9 +1,10 @@
-package com.stackroute.registration.registrationserver.controller;
+package com.stackroute.registrationserver.controller;
 
-import com.stackroute.registration.registrationserver.domain.Charity;
-import com.stackroute.registration.registrationserver.domain.Restaurant;
-import com.stackroute.registration.registrationserver.service.CharityService;
-import com.stackroute.registration.registrationserver.service.RestaurantService;
+import com.stackroute.registrationserver.domain.Charity;
+import com.stackroute.registrationserver.domain.Restaurants;
+import com.stackroute.registrationserver.service.CharityService;
+import com.stackroute.registrationserver.service.RabbitService;
+import com.stackroute.registrationserver.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,17 @@ public class RegistrationController {
     @Autowired
     private CharityService charityService;
 
+    @Autowired
+    private RabbitService rabbitService;
+
     @PostMapping("restaurant")
-    public ResponseEntity<?> saveRestaurant(@RequestBody Restaurant restaurant) throws Exception {
+    public ResponseEntity<?> saveRestaurant(@RequestBody Restaurants restaurant) throws Exception {
         ResponseEntity responseEntity;
         try {
-            Restaurant returnRestaurant = restaurantService.saveRestaurant(restaurant);
-            responseEntity = new ResponseEntity<Restaurant>(restaurant, HttpStatus.CREATED);
+            Restaurants returnRestaurant = restaurantService.saveRestaurant(restaurant);
+            responseEntity = new ResponseEntity<Restaurants>(restaurant, HttpStatus.CREATED);
 
-            restaurantService.sendToRabbitMq(restaurant);
+            rabbitService.sendToRabbitMq(restaurant);
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
 //            throw trackAlreadyExistsException;

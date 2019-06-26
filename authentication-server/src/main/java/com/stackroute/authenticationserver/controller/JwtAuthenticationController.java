@@ -1,9 +1,11 @@
 package com.stackroute.authenticationserver.controller;
 
 import com.stackroute.authenticationserver.config.JwtTokenUtil;
+import com.stackroute.authenticationserver.model.CheckResponse;
 import com.stackroute.authenticationserver.model.JwtRequest;
 import com.stackroute.authenticationserver.model.JwtResponse;
-import com.stackroute.authenticationserver.model.Users;
+
+import com.stackroute.authenticationserver.model.User;
 import com.stackroute.authenticationserver.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@RequestMapping("/users/")
+@CrossOrigin(origins = "*")
 public class JwtAuthenticationController {
 
     @Autowired
@@ -27,8 +30,8 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    @PostMapping(value = "/authenticate")
+    public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         System.out.println("inside createAuthenticationToken");
 
@@ -42,11 +45,18 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody Users user) throws Exception {
+    @PostMapping(value = "/register")
+    public ResponseEntity<User> saveUser(@RequestBody User user) throws Exception {
         System.out.println("inside registration controller");
         return ResponseEntity.ok(userDetailsService.save(user));
     }
+
+    @GetMapping(value = "/checkUser" )
+    public ResponseEntity<?> checkUser() {
+        String s = "ahis is a registered User";
+        return ResponseEntity.ok(new CheckResponse(s));
+    }
+
 
     private void authenticate(String username, String password) throws Exception {
         System.out.println("inside authenticate");

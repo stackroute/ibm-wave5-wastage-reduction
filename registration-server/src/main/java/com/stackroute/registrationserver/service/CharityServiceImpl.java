@@ -1,7 +1,7 @@
-package com.stackroute.registration.registrationserver.service;
+package com.stackroute.registrationserver.service;
 
-import com.stackroute.registration.registrationserver.domain.Charity;
-import com.stackroute.registration.registrationserver.repository.CharityRepository;
+import com.stackroute.registrationserver.domain.Charity;
+import com.stackroute.registrationserver.repository.CharityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

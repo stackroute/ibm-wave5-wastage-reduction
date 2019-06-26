@@ -1,9 +1,7 @@
 package com.stackroute.authenticationserver.service;
 
-import com.stackroute.authenticationserver.model.Users;
-import com.stackroute.authenticationserver.repository.UserDao;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import com.stackroute.authenticationserver.model.User;
+import com.stackroute.authenticationserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 public class JwtUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userDao;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
@@ -25,7 +23,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("loadUserByUsername");
-        Users user = userDao.findByUsername(username);
+        User user = userDao.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
@@ -33,8 +31,10 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
-    public Users save(Users user) {
-        System.out.println("inside save service");
+    public User save(User user) {
+//        System.out.println("inside save service");
+//        if (userDao.findByUsername(user.getUsername())
+//            throws Exception e;
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         return userDao.save(user);
     }

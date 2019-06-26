@@ -1,4 +1,4 @@
-package com.stackroute.registration.registrationserver.domain;
+package com.stackroute.registrationserver.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,23 +13,14 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RestaurantProfile {
+public class Charity {
 
     @Id
-            String restaurantId;
-
+    String charityId;
     String username;
-
     String password;
-
-    String restaurantName;
-
+    String charityName;
     String certificateNo;
-
-    Long phoneNo;
-
+    int phoneNo;
     String address;
-
-    String email;
-
 }

@@ -1,4 +1,4 @@
-package com.stackroute.registration.registrationserver;
+package com.stackroute.registrationserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

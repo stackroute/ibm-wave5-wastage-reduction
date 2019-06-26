@@ -1,4 +1,5 @@
-package com.stackroute.registration.registrationserver.domain;
+package com.stackroute.authenticationserver.model;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,14 +14,11 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Charity {
+public class User {
 
     @Id
-    String charityId;
+    String id;
     String username;
     String password;
-    String charityName;
-    String certificateNo;
-    int phoneNo;
-    String address;
+
 }
