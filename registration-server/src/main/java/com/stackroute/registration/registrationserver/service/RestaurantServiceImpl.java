@@ -1,7 +1,7 @@
 package com.stackroute.registration.registrationserver.service;
 
 import com.stackroute.registration.registrationserver.domain.Restaurant;
-import com.stackroute.registration.registrationserver.domain.RestaurantDetails;
+import com.stackroute.registration.registrationserver.domain.RestaurantProfile;
 import com.stackroute.registration.registrationserver.domain.Users;
 import com.stackroute.registration.registrationserver.repository.RestaurantRepository;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -33,11 +33,11 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant saveRestaurant(Restaurant restaurant) throws Exception {
 
-        RestaurantDetails restaurantDetails = new RestaurantDetails(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getRestaurantName(),restaurant.getCertificateNo(),restaurant.getPhoneNo(),restaurant.getAddress());
+        //RestaurantProfile restaurantDetails = new RestaurantProfile(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getRestaurantName(),restaurant.getPhoneNo());
 
-        RestaurantDetails savedRestaurantDetails = restaurantRepository.save(restaurantDetails);
-        if (savedRestaurantDetails == null)
-            throw new Exception("User Already Exists");
+//        RestaurantProfile savedRestaurantDetails = restaurantRepository.save(restaurantDetails);
+//        if (savedRestaurantDetails == null)
+//            throw new Exception("User Already Exists");
         return null;
     }
 

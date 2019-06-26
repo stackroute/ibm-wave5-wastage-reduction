@@ -20,17 +20,16 @@ import javax.persistence.Id;
 public class Restaurant {
 
     @Id
-    String restaurantId;
-
+            String restaurantId;
     String username;
 
     String password;
 
-    String restaurantName;
+    String confirmPassword;
 
-    String certificateNo;
+    String restaurantName;
 
     int phoneNo;
 
-    String address;
+    String email;
 }

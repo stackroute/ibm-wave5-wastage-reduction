@@ -13,19 +13,23 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RestaurantDetails {
+public class RestaurantProfile {
 
     @Id
-    String restaurantId;
+            String restaurantId;
 
     String username;
+
+    String password;
 
     String restaurantName;
 
     String certificateNo;
 
-    int phoneNo;
+    Long phoneNo;
 
     String address;
+
+    String email;
 
 }

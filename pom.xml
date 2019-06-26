@@ -32,6 +32,7 @@
 		<module>zuul-api</module>
 		<module>registration-server</module>
 		<module>authentication-server</module>
+		<module>charity-server</module>
 	</modules>
 
 	<dependencies>
@@ -76,6 +77,7 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.1.5.RELEASE</version>
         </dependency>
+
     </dependencies>
 
 	<dependencyManagement>
