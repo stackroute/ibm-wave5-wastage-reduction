@@ -33,6 +33,7 @@
 		<module>registration-server</module>
 		<module>authentication-server</module>
 		<module>charity-server</module>
+		<module>restaurant-log-server</module>
 	</modules>
 
 	<dependencies>
