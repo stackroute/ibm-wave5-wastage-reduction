@@ -1,10 +1,12 @@
 package com.stackroute.registrationserver.service;
 
 import com.stackroute.registrationserver.domain.Restaurants;
-import com.stackroute.registrationserver.domain.RestaurantDetails;
+import com.stackroute.registrationserver.domain.RestaurantProfile;
 import com.stackroute.registrationserver.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -19,14 +21,19 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Restaurants saveRestaurant(Restaurants restaurant) throws Exception {
+    public RestaurantProfile saveRestaurant(Restaurants restaurant) throws Exception {
 
-        RestaurantDetails restaurantDetails = new RestaurantDetails(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getRestaurantName(),restaurant.getCertificateNo(),restaurant.getPhoneNo(),restaurant.getAddress());
+        RestaurantProfile restaurantProfile = new RestaurantProfile(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getRestaurantName(),restaurant.getCertificateNo(),restaurant.getPhoneNo(),restaurant.getAddress());
 
-        RestaurantDetails savedRestaurantDetails = restaurantRepository.save(restaurantDetails);
+        RestaurantProfile savedRestaurantDetails = restaurantRepository.save(restaurantProfile);
         if (savedRestaurantDetails == null)
             throw new Exception("User Already Exists");
-        return null;
+        return savedRestaurantDetails;
+    }
+
+    @Override
+    public List<RestaurantProfile> displayRestaurants() throws Exception {
+        return restaurantRepository.findAll();
     }
 
 

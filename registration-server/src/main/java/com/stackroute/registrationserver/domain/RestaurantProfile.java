@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RestaurantDetails {
+public class RestaurantProfile {
 
     @Id
     String restaurantId;

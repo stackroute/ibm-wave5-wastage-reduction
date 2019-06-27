@@ -7,18 +7,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Charity {
+public class CharityProfile {
 
-    String charityId;
-    String username;
-    String password;
-    String charityName;
-    String certificateNo;
-    String phoneNo;
-    String address;
-}
+
+        @Id
+        String charityId;
+        String username;
+        String charityName;
+        String certificateNo;
+        String phoneNo;
+        String address;
+    }
+
+
