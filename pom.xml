@@ -32,7 +32,7 @@
 		<module>zuul-api</module>
 		<module>registration-server</module>
 		<module>authentication-server</module>
-		<module>charity-server</module>
+		<module>charity-logs-server</module>
 		<module>restaurant-logs-server</module>
 	</modules>
 

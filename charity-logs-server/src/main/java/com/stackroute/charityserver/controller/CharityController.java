@@ -21,19 +21,19 @@ public class CharityController {
     }
     ResponseEntity responseEntity;
 
-    @PostMapping("logs")
-    public ResponseEntity<?> addCharityProfile (@RequestBody CharityLogs charityLogs)
+    @PostMapping("charity-logs")
+    public ResponseEntity<?> saveCharityLogs (@RequestBody CharityLogs charityLogs) throws Exception
     {
 
-        charityLogsService.addCharityProfile(charityLogs);
+        charityLogsService.saveCharityLogs(charityLogs);
         responseEntity=new ResponseEntity(charityLogs, HttpStatus.CREATED);
         return  responseEntity;
     }
 
-    @GetMapping("logs")
-    public ResponseEntity display()
+    @GetMapping("charity-logs")
+    public ResponseEntity displayCharityLogs()
     {
-        return  new ResponseEntity(charityLogsService.displayAll(),HttpStatus.OK);
+        return  new ResponseEntity(charityLogsService.displayCharityLogs(),HttpStatus.OK);
     }
 
 

@@ -5,9 +5,9 @@ import com.stackroute.charityserver.domain.CharityLogs;
 import java.util.List;
 
 public interface CharityLogsService {
-    public CharityLogs addCharityProfile(CharityLogs charityProfile);
+    public CharityLogs saveCharityLogs(CharityLogs charityLogs) throws Exception;
 
-    public List<CharityLogs> displayAll();
+    public List<CharityLogs> displayCharityLogs();
 
 
 }

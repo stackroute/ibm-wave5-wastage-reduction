@@ -16,15 +16,17 @@ public class CharityLogsServiceImpl implements CharityLogsService {
     public CharityLogsServiceImpl(CharityLogsRepository charityLogsRepository){this.charityLogsRepository=charityLogsRepository;}
 
     @Override
-    public CharityLogs addCharityProfile(CharityLogs charityProfile) {
+    public CharityLogs saveCharityLogs(CharityLogs charityLogs) throws Exception{
 
-//        if(charityProfileRepository.exists(charityProfile.getPhoneNo())){
-//            return charityProfileRepository.save(charityProfile);}
-        return charityLogsRepository.save(charityProfile);
+        if(charityLogsRepository.existsById(charityLogs.getId())) {
+            throw new Exception("Charity already exists");
+        }
+        else
+            return charityLogsRepository.save(charityLogs);
     }
 
     @Override
-    public List<CharityLogs> displayAll() {
+    public List<CharityLogs> displayCharityLogs() {
         return charityLogsRepository.findAll();
     }
 }
