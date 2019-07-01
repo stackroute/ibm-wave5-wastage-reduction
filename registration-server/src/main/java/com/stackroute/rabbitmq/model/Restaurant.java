@@ -14,7 +14,6 @@ import javax.persistence.Id;
 @Builder
 public class Restaurant {
 
-    @Id
     private String restaurantId;
     private String username;
     private String password;
