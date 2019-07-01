@@ -59,3 +59,10 @@ services:
      hostname: localhost
      ports:
        - 3306:3306
+
+  mongo:
+    image: mongo:3.6
+    restart: always
+    hostname: localhost
+    ports:
+      - 27017:27017
