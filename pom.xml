@@ -34,7 +34,6 @@
 		<module>authentication-server</module>
 		<module>charity-logs-server</module>
 		<module>restaurant-logs-server</module>
-		<module>routing-service</module>
 	</modules>
 
 	<dependencies>
