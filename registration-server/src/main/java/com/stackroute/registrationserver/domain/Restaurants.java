@@ -11,17 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Restaurants {
 
-    String restaurantId;
+    private String restaurantId;
+    private String username;
+    private String password;
+    private String restaurantName;
+    private String certificateNo;
+    private String phoneNo;
+    private String address;
 
-    String username;
-
-    String password;
-
-    String restaurantName;
-
-    String certificateNo;
-
-    String phoneNo;
-
-    String address;
 }

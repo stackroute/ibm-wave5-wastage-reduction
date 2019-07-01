@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users/")
+@RequestMapping("/authentication/")
 @CrossOrigin(origins = "*")
 public class JwtAuthenticationController {
 
@@ -45,15 +45,9 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping(value = "/register")
-    public ResponseEntity<User> saveUser(@RequestBody User user) throws Exception {
-        System.out.println("inside registration controller");
-        return ResponseEntity.ok(userDetailsService.save(user));
-    }
-
     @GetMapping(value = "/checkUser" )
-    public ResponseEntity<?> checkUser() {
-        String s = "ahis is a registered User";
+    public ResponseEntity<CheckResponse> checkUser() {
+        String s = "This is a registered User";
         return ResponseEntity.ok(new CheckResponse(s));
     }
 

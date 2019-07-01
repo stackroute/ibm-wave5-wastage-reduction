@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface RestaurantService {
 
-    public RestaurantProfile saveRestaurant(Restaurants restaurant) throws Exception;
-    public List<RestaurantProfile> displayRestaurants() throws Exception;
-    //public void sendToRabbitMq(Restaurant restaurant);
-//    public void sendToRabbitMq(Restaurant restaurant);
+    RestaurantProfile saveRestaurant(Restaurants restaurant) throws Exception;
+    List<RestaurantProfile> displayRestaurants() throws Exception;
 
 }

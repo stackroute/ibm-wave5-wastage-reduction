@@ -24,6 +24,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("loadUserByUsername");
         User user = userDao.findByUsername(username);
+        System.out.println("ahem");
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
@@ -31,12 +32,14 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
-    public User save(User user) {
-//        System.out.println("inside save service");
-//        if (userDao.findByUsername(user.getUsername())
-//            throws Exception e;
+    public User save(User user) throws Exception {
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
-        return userDao.save(user);
+        if (userDao.existsById(user.getId()))
+            throw new Exception("User already exists");
+        if (userDao.findByUsername(user.getUsername()) != null)
+            throw new Exception("Username already exists");
+        else
+            return userDao.save(user);
     }
 
 

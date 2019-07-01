@@ -29,9 +29,11 @@ public class RegistrationController {
     @Autowired
     private RabbitService rabbitService;
 
-    @PostMapping("restaurant")
-    public ResponseEntity<?> saveRestaurant(@RequestBody Restaurants restaurant) throws Exception {
+    @PostMapping("restaurant-profile")
+    public ResponseEntity<RestaurantProfile> saveRestaurant(@RequestBody Restaurants restaurant) throws Exception {
         ResponseEntity responseEntity;
+
+        System.out.println(restaurant);
         try {
             RestaurantProfile returnRestaurant = restaurantService.saveRestaurant(restaurant);
             responseEntity = new ResponseEntity<RestaurantProfile>(returnRestaurant, HttpStatus.CREATED);
@@ -39,12 +41,11 @@ public class RegistrationController {
             rabbitService.sendToRabbitMq(restaurant);
         } catch (Exception e) {
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
-//            throw trackAlreadyExistsException;
         }
 
         return responseEntity;
     }
-    @GetMapping("restaurant")
+    @GetMapping("restaurant-profile")
     public ResponseEntity<List<Restaurant>> displayRestaurant()
     {
         ResponseEntity responseEntity;
@@ -59,8 +60,8 @@ public class RegistrationController {
     }
 
 
-    @PostMapping("charity")
-    public ResponseEntity<?> saveCharity(@RequestBody Charity charity) throws Exception {
+    @PostMapping("charity-profile")
+    public ResponseEntity<CharityProfile> saveCharity(@RequestBody Charity charity) throws Exception {
         ResponseEntity responseEntity;
         try {
             CharityProfile returnCharity = charityService.saveCharity(charity);
@@ -72,7 +73,7 @@ public class RegistrationController {
 
         return responseEntity;
     }
-    @GetMapping("charity")
+    @GetMapping("charity-profile")
     public ResponseEntity<List<CharityProfile>> displayCharity()
     {
         ResponseEntity responseEntity;

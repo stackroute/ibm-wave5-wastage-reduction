@@ -16,7 +16,7 @@ public class RabbitService {
     private JwtUserDetailsService userDetailsService;
 
     @RabbitHandler
-    public void recievedMessage(Restaurant restaurant) {
+    public void recievedMessage(Restaurant restaurant) throws Exception{
         System.out.println("Recieved Message From RabbitMQ: " + restaurant);
         User user = new User(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getPassword());
         userDetailsService.save(user);

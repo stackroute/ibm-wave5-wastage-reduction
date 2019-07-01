@@ -16,16 +16,11 @@ import javax.persistence.Id;
 public class RestaurantProfile {
 
     @Id
-    String restaurantId;
-
-    String username;
-
-    String restaurantName;
-
-    String certificateNo;
-
-    String phoneNo;
-
-    String address;
+    private String restaurantId;
+    private String username;
+    private String restaurantName;
+    private String certificateNo;
+    private String phoneNo;
+    private String address;
 
 }

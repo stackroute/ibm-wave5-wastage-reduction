@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CharityService {
 
-    public CharityProfile saveCharity(Charity charity) throws Exception;
-    public List<CharityProfile> displayCharity();
+    CharityProfile saveCharity(Charity charity) throws Exception;
+    List<CharityProfile> displayCharity();
 
 }

@@ -23,6 +23,8 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public RestaurantProfile saveRestaurant(Restaurants restaurant) throws Exception {
 
+        System.out.println(restaurant);
+
         RestaurantProfile restaurantProfile = new RestaurantProfile(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getRestaurantName(),restaurant.getCertificateNo(),restaurant.getPhoneNo(),restaurant.getAddress());
 
         RestaurantProfile savedRestaurantDetails = restaurantRepository.save(restaurantProfile);

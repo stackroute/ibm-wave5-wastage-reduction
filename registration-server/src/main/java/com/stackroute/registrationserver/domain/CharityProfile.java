@@ -14,14 +14,13 @@ import javax.persistence.Id;
 @Builder
 public class CharityProfile {
 
-
         @Id
-        String charityId;
-        String username;
-        String charityName;
-        String certificateNo;
-        String phoneNo;
-        String address;
+        private String charityId;
+        private String username;
+        private String charityName;
+        private String certificateNo;
+        private String phoneNo;
+        private String address;
     }
 
 

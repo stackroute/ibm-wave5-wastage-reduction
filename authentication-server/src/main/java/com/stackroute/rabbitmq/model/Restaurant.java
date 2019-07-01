@@ -14,17 +14,11 @@ import javax.persistence.Id;
 @Builder
 public class Restaurant {
 
-    String restaurantId;
-
-    String username;
-
-    String password;
-
-    String restaurantName;
-
-    String certificateNo;
-
-    String phoneNo;
-
-    String address;
+    private String restaurantId;
+    private String username;
+    private String password;
+    private String restaurantName;
+    private String certificateNo;
+    private String phoneNo;
+    private String address;
 }

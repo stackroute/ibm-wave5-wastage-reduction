@@ -8,7 +8,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<groupId>com.stackroute</groupId>
-	<artifactId>charity-server</artifactId>
+	<artifactId>charity-logs-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>charity-server</name>
 	<description>Demo project for Spring Boot</description>
