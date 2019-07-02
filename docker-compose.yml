@@ -25,6 +25,9 @@ services:
     depends_on:
       - config-service
       - eureka-server
+      - registration-service
+      - restaurant-logs-service
+      - charity-logs-service
     restart: always
     network_mode: "host"
     hostname: localhost
@@ -42,26 +45,50 @@ services:
     ports:
       - 8070:8070
 
+  restaurant-logs-service:
+    image: restaurant-logs-service:1.0
+    build: restaurant-logs-server/
+    depends_on:
+      - mongo
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8090:8090
+
+  charity-logs-service:
+    image: charity-logs-service:1.0
+    build: charity-logs-server/
+    depends_on:
+      - mongo
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8070:8070
+
   registration-service:
     image: registration-service:1.0
     build: registration-server/
     depends_on:
-      - zuul-api
+      - mysql
     restart: always
     network_mode: "host"
     hostname: localhost
     ports:
       - 8000:8000
 
-   mysql:
-     image: mysql:5.7
-     restart: always
-     hostname: localhost
-     ports:
-       - 3306:3306
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    hostname: localhost
+    ports:
+      - 3306:3306
 
   mongo:
-    image: mongo:3.6
+    image: mongo
     restart: always
     hostname: localhost
     ports:
