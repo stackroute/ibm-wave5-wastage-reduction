@@ -1,0 +1,6 @@
+com/stackroute/charityserver/controller/CharityController.class
+com/stackroute/charityserver/service/CharityLogsService.class
+com/stackroute/charityserver/domain/CharityLogs.class
+com/stackroute/charityserver/service/CharityLogsServiceImpl.class
+com/stackroute/charityserver/CharityServerApplication.class
+com/stackroute/charityserver/repository/CharityLogsRepository.class

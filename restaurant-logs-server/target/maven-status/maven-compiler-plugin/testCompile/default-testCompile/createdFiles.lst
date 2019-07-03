@@ -1,0 +1,3 @@
+com/stackroute/restaurantlogsserver/RestaurantLogsServerApplicationTests.class
+com/stackroute/restaurantlogsserver/service/RestaurantLogsServiceTest.class
+com/stackroute/restaurantlogsserver/controller/RestaurantLogsControllerTest.class
