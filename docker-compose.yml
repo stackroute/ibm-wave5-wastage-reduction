@@ -82,8 +82,17 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+#      MYSQL_DATABASE:
+#        - registrationService
+#        - authorizationService
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: "Destiny1!"
     hostname: localhost
+    entrypoint:
+      sh -c "
+      echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;
+      /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      "
     ports:
       - 3306:3306
 
@@ -93,3 +102,19 @@ services:
     hostname: localhost
     ports:
       - 27017:27017
+
+  rabbitmq:
+    image: rabbitmq:3.7.5-management
+    hostname: localhost
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ../data/rabbitmq:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
+#      - ./rabbit_localhost_2019-7-3.json:/opt/definitions.json:ro
+#      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+    environment:
+      RABBITMQ_ERLANG_COOKIE: 6085e2412b6fa88647466c6a81c0cea0
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /
