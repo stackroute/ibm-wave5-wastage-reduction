@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.7.5-management
+    hostname: localhost
+    network_mode: "host"
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ../data/rabbitmq:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
+#      - ./rabbit_localhost_2019-7-3.json:/opt/definitions.json:ro
+#      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+    environment:
+      RABBITMQ_ERLANG_COOKIE: 6085e2412b6fa88647466c6a81c0cea0
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /

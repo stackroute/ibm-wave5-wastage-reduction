@@ -37,8 +37,10 @@ services:
   authentication-server:
     image: authentication-server:1.0
     build: authentication-server/
-#    depends_on:
-#      - zuul-api
+    depends_on:
+      - zuul-api
+      - mysql
+      - rabbitmq
     restart: always
     network_mode: "host"
     hostname: localhost
@@ -72,6 +74,7 @@ services:
     build: registration-server/
     depends_on:
       - mysql
+      - rabbitmq
     restart: always
     network_mode: "host"
     hostname: localhost
@@ -83,9 +86,6 @@ services:
     restart: always
     network_mode: "host"
     environment:
-#      MYSQL_DATABASE:
-#        - registrationService
-#        - authorizationService
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: "Destiny1!"
     hostname: localhost
@@ -110,12 +110,12 @@ services:
     hostname: localhost
     network_mode: "host"
     ports:
-#      - 5672:5672
+      - 5672:5672
       - 15672:15672
     volumes:
       - ../data/rabbitmq:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
-      - ./rabbit_localhost_2019-7-3.json:/opt/definitions.json:ro
-      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+#      - ./rabbit_localhost_2019-7-3.json:/opt/definitions.json:ro
+#      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
     environment:
       RABBITMQ_ERLANG_COOKIE: 6085e2412b6fa88647466c6a81c0cea0
       RABBITMQ_DEFAULT_USER: guest

@@ -28,7 +28,6 @@ public class RabbitMqConfig {
     Queue queue() {
         System.out.println("inside queue");
         return new Queue(queueName, true);
-
     }
 
     @Bean
