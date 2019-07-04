@@ -8,17 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "${rabbitmq.queue}")
-public class RabbitService {
+@RabbitListener(queues = "${restaurant.queue}")
+public class RestaurantRabbitService {
 
 
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
     @RabbitHandler
-    public void recievedMessage(Restaurant restaurant) throws Exception{
-        System.out.println("Recieved Message From RabbitMQ: " + restaurant);
-        User user = new User(restaurant.getRestaurantId(),restaurant.getUsername(),restaurant.getPassword());
+    public void recievedRestaurantMessage(Restaurant restaurant) throws Exception{
+        System.out.println("Recieved Restaurant Message From RabbitMQ: " + restaurant);
+        User user = new User(restaurant.getUsername(),restaurant.getPassword());
         userDetailsService.save(user);
 
     }

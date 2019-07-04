@@ -1,7 +1,7 @@
 package com.stackroute.registrationserver.controller;
 
 import com.stackroute.rabbitmq.model.Restaurant;
-import com.stackroute.registrationserver.domain.Charity;
+import com.stackroute.registrationserver.domain.Charities;
 import com.stackroute.registrationserver.domain.CharityProfile;
 import com.stackroute.registrationserver.domain.RestaurantProfile;
 import com.stackroute.registrationserver.domain.Restaurants;
@@ -35,12 +35,16 @@ public class RegistrationController {
 
         System.out.println(restaurant);
         try {
+
             RestaurantProfile returnRestaurant = restaurantService.saveRestaurant(restaurant);
             responseEntity = new ResponseEntity<RestaurantProfile>(returnRestaurant, HttpStatus.CREATED);
 
-            rabbitService.sendToRabbitMq(restaurant);
+            rabbitService.sendToRestaurantRabbitMq(restaurant);
+
         } catch (Exception e) {
+
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+
         }
 
         return responseEntity;
@@ -51,24 +55,33 @@ public class RegistrationController {
         ResponseEntity responseEntity;
 
         try{
+
             responseEntity=new ResponseEntity(restaurantService.displayRestaurants(),HttpStatus.CREATED);
+
         }
         catch (Exception e){
+
             responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+
         }
         return responseEntity;
     }
 
 
     @PostMapping("charity-profile")
-    public ResponseEntity<CharityProfile> saveCharity(@RequestBody Charity charity) throws Exception {
+    public ResponseEntity<CharityProfile> saveCharity(@RequestBody Charities charity) throws Exception {
         ResponseEntity responseEntity;
         try {
+
             CharityProfile returnCharity = charityService.saveCharity(charity);
             responseEntity = new ResponseEntity<CharityProfile>(returnCharity, HttpStatus.CREATED);
+
+            rabbitService.sendToCharityRabbitMq(charity);
+
         } catch (Exception e) {
+
             responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
-//            throw trackAlreadyExistsException;
+
         }
 
         return responseEntity;
@@ -79,10 +92,14 @@ public class RegistrationController {
         ResponseEntity responseEntity;
 
         try{
+
             responseEntity=new ResponseEntity(charityService.displayCharity(),HttpStatus.CREATED);
+
         }
         catch (Exception e){
+
             responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+
         }
         return responseEntity;
     }

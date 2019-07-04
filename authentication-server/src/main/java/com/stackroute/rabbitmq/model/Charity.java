@@ -1,4 +1,4 @@
-package com.stackroute.registrationserver.domain;
+package com.stackroute.rabbitmq.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,17 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Restaurants {
+public class Charity {
 
     private String username;
     private String password;
-    private String email;
-    private String restaurantName;
-    private long mobile;
+    private String charityName;
     private String certificateNo;
     private String phoneNo;
     private String address;
-    private String location;
-    private String certificateName;
-
 }

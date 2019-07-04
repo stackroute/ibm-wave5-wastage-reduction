@@ -1,11 +1,16 @@
 package com.stackroute.authenticationserver.config;
 
 import com.stackroute.rabbitmq.model.Users;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.DefaultClassMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,34 +20,46 @@ import java.util.Map;
 @Configuration
 public class RabbitMqConfig {
 
+    @Value("${restaurant.queue}")
+    String queueName;
+
+    @Value("${restaurant.exchange}")
+    String exchange;
+
+    @Value("${restaurant.routingkey}")
+    private String routingkey;
+
+    @Bean
+    Queue queue() {
+        return new Queue(queueName, true);
+    }
+
+    @Bean
+    DirectExchange exchange() {
+        return new DirectExchange(exchange);
+    }
+
+    @Bean
+    Binding binding(Queue queue, DirectExchange exchange) {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+    }
+
+
     @Bean
     public MessageConverter jsonMessageConverter()
     {
-        System.out.println("inside jsonMessageConverter");
         Jackson2JsonMessageConverter jsonMessageConverter = new Jackson2JsonMessageConverter();
-        jsonMessageConverter.setClassMapper(classMapper());
+//        jsonMessageConverter.setClassMapper(classMapper());
         return jsonMessageConverter;
     }
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        System.out.println("inside rabbittemplate");
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
 
-    @Bean
-    public DefaultClassMapper classMapper()
-    {
-        System.out.println("inside classMapper");
-        DefaultClassMapper classMapper = new DefaultClassMapper();
-        Map<String, Class<?>> idClassMapping = new HashMap<>();
-        idClassMapping.put("com.stackroute.rabbitmq.model.User", Users.class);
-        classMapper.setIdClassMapping(idClassMapping);
-        classMapper.setTrustedPackages("*");
-
-        return classMapper;
-    }
 
 }

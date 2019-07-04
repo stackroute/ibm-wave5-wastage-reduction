@@ -9,17 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Restaurants {
+public class DeliveryBoys {
 
+    private String deliveryBoyName;
+    private String email;
     private String username;
     private String password;
-    private String email;
-    private String restaurantName;
-    private long mobile;
-    private String certificateNo;
-    private String phoneNo;
+    private Long mobile;
     private String address;
-    private String location;
-    private String certificateName;
-
+    private String licenseNo;
+    private String licenseName;
 }

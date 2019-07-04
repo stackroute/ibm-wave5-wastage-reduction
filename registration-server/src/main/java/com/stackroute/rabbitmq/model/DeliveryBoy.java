@@ -5,19 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
-
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Restaurant {
+public class DeliveryBoy {
 
+    private String deliveryBoyName;
+    private String email;
     private String username;
     private String password;
-    private String restaurantName;
-    private String certificateNo;
-    private String phoneNo;
+    private Long mobile;
     private String address;
+    private String licenseNo;
+    private String licenseName;
 }

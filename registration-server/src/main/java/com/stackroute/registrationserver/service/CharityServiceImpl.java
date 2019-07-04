@@ -1,6 +1,6 @@
 package com.stackroute.registrationserver.service;
 
-import com.stackroute.registrationserver.domain.Charity;
+import com.stackroute.registrationserver.domain.Charities;
 import com.stackroute.registrationserver.domain.CharityProfile;
 import com.stackroute.registrationserver.repository.CharityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class CharityServiceImpl implements CharityService {
     }
 
     @Override
-    public CharityProfile saveCharity(Charity charity) throws Exception {
-        CharityProfile charityProfile = new CharityProfile(charity.getCharityId(),charity.getUsername(),charity.getCharityName(),charity.getCertificateNo(),charity.getPhoneNo(),charity.getAddress());
+    public CharityProfile saveCharity(Charities charity) throws Exception {
+        CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getCharityName(),charity.getEmail(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateName());
         CharityProfile savedCharity = charityRepository.save(charityProfile);
         if (savedCharity == null)
             throw new Exception("User Already Exists");

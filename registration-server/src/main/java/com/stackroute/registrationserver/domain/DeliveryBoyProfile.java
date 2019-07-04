@@ -1,25 +1,27 @@
 package com.stackroute.registrationserver.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Restaurants {
+public class DeliveryBoyProfile {
 
+    @Id
     private String username;
-    private String password;
+    private String deliveryBoyName;
     private String email;
-    private String restaurantName;
-    private long mobile;
-    private String certificateNo;
-    private String phoneNo;
+    private Long mobile;
     private String address;
-    private String location;
-    private String certificateName;
-
+    private String licenseNo;
+    private String licenseName;
 }

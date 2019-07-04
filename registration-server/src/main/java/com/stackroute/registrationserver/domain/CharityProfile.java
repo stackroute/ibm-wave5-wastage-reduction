@@ -19,12 +19,16 @@ import javax.persistence.Id;
 public class CharityProfile {
 
         @Id
-        private String charityId;
         private String username;
         private String charityName;
+        private String email;
+        private Long mobile;
         private String certificateNo;
-        private String phoneNo;
         private String address;
-    }
+        private String location;
+        private Long foodRequirement;
+        private String certificateName;
+
+}
 
 
