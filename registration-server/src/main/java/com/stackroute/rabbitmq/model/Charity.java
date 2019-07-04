@@ -13,12 +13,12 @@ public class Charity {
 
     private String username;
     private String password;
-    private String charityName;
     private String email;
-    private String certificateNo;
-    private String phoneNo;
+    private String charityName;
+    private long mobile;
     private String address;
     private String location;
     private long foodRequirement;
+    private String certificateNo;
     private String certificateName;
 }

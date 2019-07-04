@@ -27,7 +27,7 @@ public class RabbitService {
 
     public void sendToRestaurantRabbitMq(Restaurants restaurants) {
 
-        Restaurant restaurant = new Restaurant(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRestaurantName(),restaurants.getMobile(),restaurants.getCertificateNo(),restaurants.getPhoneNo(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateName());
+        Restaurant restaurant = new Restaurant(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRestaurantName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
 
         rabbitTemplate.convertAndSend(exchange, routingkey,restaurant);
 
@@ -37,7 +37,7 @@ public class RabbitService {
 
     public void sendToCharityRabbitMq(Charities charities) {
 
-        Charity charity = new Charity(charities.getUsername(),charities.getPassword(),charities.getCharityName(),charities.getEmail(),charities.getCertificateNo(),charities.getPhoneNo(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateName());
+        Charity charity = new Charity(charities.getUsername(),charities.getPassword(),charities.getEmail(),charities.getCharityName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
 
         rabbitTemplate.convertAndSend(exchange, routingkey,charity);
 

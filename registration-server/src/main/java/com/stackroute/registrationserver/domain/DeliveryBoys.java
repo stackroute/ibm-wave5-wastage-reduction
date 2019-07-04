@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DeliveryBoys {
 
-    private String deliveryBoyName;
-    private String email;
     private String username;
     private String password;
+    private String email;
+    private String deliveryBoyName;
     private Long mobile;
     private String address;
     private String licenseNo;

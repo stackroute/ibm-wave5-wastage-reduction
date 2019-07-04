@@ -16,8 +16,11 @@ public class Restaurant {
 
     private String username;
     private String password;
+    private String email;
     private String restaurantName;
-    private String certificateNo;
-    private String phoneNo;
+    private long mobile;
     private String address;
+    private String location;
+    private String certificateNo;
+    private String certificateName;
 }

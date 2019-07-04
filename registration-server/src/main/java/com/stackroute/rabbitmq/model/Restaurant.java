@@ -19,9 +19,8 @@ public class Restaurant {
     private String email;
     private String restaurantName;
     private long mobile;
-    private String certificateNo;
-    private String phoneNo;
     private String address;
     private String location;
+    private String certificateNo;
     private String certificateName;
 }

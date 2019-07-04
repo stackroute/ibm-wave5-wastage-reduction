@@ -20,13 +20,13 @@ public class CharityProfile {
 
         @Id
         private String username;
-        private String charityName;
         private String email;
-        private Long mobile;
-        private String certificateNo;
+        private String charityName;
+        private long mobile;
         private String address;
         private String location;
-        private Long foodRequirement;
+        private long foodRequirement;
+        private String certificateNo;
         private String certificateName;
 
 }
