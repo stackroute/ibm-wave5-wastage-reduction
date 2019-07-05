@@ -17,11 +17,6 @@ public class CharityLogsServiceImpl implements CharityLogsService {
 
     @Override
     public CharityLogs saveCharityLogs(CharityLogs charityLogs) throws Exception{
-
-        if(charityLogsRepository.existsById(charityLogs.getId())) {
-            throw new Exception("Charity already exists");
-        }
-        else
             return charityLogsRepository.save(charityLogs);
     }
 

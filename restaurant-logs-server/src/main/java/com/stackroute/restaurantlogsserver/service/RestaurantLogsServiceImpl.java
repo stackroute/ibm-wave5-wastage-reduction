@@ -19,23 +19,13 @@ public class RestaurantLogsServiceImpl implements RestaurantLogsService {
     }
     @Override
     public RestaurantLogs saveRestaurantLog(RestaurantLogs restaurantLog) throws RestaurantIdAlreadyExistsException{
-        if(restaurantLogRepository.existsById(restaurantLog.getRestaurantlogid()))
-        {
-            throw new RestaurantIdAlreadyExistsException("RestaurantID already exists exception");
-        }
         RestaurantLogs savedrestaurantLog =restaurantLogRepository.save(restaurantLog);
-        if(savedrestaurantLog ==null)
-        {
-            throw new RestaurantIdAlreadyExistsException("RestaurantID already exist exception");
-        }
-
         return savedrestaurantLog;
     }
 
     @Override
     public List<RestaurantLogs> getAllRestaurantLog() throws Exception {
         List<RestaurantLogs> log = restaurantLogRepository.findAll();
-        System.out.println("mjjyftd");
         return log;
     }
 }

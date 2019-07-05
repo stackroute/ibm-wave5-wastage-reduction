@@ -17,7 +17,6 @@ public class RestaurantRabbitService {
 
     @RabbitHandler
     public void recievedRestaurantMessage(Restaurant restaurant) throws Exception{
-        System.out.println("Recieved Restaurant Message From RabbitMQ: " + restaurant);
         User user = new User(restaurant.getUsername(),restaurant.getPassword());
         userDetailsService.save(user);
 

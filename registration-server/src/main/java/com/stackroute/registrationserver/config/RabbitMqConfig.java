@@ -26,30 +26,25 @@ public class RabbitMqConfig {
 
     @Bean
     Queue queue() {
-        System.out.println("inside queue");
         return new Queue(queueName, true);
     }
 
     @Bean
     DirectExchange exchange() {
-        System.out.println("inside exchange");
         return new DirectExchange(exchange);
     }
 
     @Bean
     Binding binding(Queue queue, DirectExchange exchange) {
-        System.out.println("inside binding");
         return BindingBuilder.bind(queue).to(exchange).with(routingkey);
     }
 
     @Bean
     public MessageConverter jsonMessageConverter() {
-        System.out.println("inside jsonMessageConverter");
         return new Jackson2JsonMessageConverter();
     }
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-        System.out.println("inside rabbitTemplate");
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;

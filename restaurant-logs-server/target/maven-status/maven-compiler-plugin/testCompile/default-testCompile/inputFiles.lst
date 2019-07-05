@@ -1,4 +1,4 @@
-/home/arathi/waste/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/repository/RestaurantLogsRepositoryTest.java
-/home/arathi/waste/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/service/RestaurantLogsServiceTest.java
-/home/arathi/waste/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/controller/RestaurantLogsControllerTest.java
-/home/arathi/waste/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/RestaurantLogsServerApplicationTests.java
+/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/repository/RestaurantLogsRepositoryTest.java
+/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/controller/RestaurantLogsControllerTest.java
+/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/service/RestaurantLogsServiceTest.java
+/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/RestaurantLogsServerApplicationTests.java

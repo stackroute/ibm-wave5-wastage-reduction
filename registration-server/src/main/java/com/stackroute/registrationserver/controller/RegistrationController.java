@@ -33,7 +33,6 @@ public class RegistrationController {
     public ResponseEntity<RestaurantProfile> saveRestaurant(@RequestBody Restaurants restaurant) throws Exception {
         ResponseEntity responseEntity;
 
-        System.out.println(restaurant);
         try {
 
             RestaurantProfile returnRestaurant = restaurantService.saveRestaurant(restaurant);

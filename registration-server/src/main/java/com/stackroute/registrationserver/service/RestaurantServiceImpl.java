@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
+
     RestaurantRepository restaurantRepository;
 
     @Autowired
@@ -23,13 +24,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public RestaurantProfile saveRestaurant(Restaurants restaurant) throws Exception {
 
-        System.out.println(restaurant);
-
         RestaurantProfile restaurantProfile = new RestaurantProfile(restaurant.getUsername(),restaurant.getEmail(),restaurant.getRestaurantName(),restaurant.getMobile(),restaurant.getAddress(),restaurant.getLocation(),restaurant.getCertificateNo(),restaurant.getCertificateName());
 
         RestaurantProfile savedRestaurantDetails = restaurantRepository.save(restaurantProfile);
-        if (savedRestaurantDetails == null)
-            throw new Exception("User Already Exists");
         return savedRestaurantDetails;
     }
 

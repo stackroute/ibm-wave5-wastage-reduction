@@ -22,7 +22,6 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("loadUserByUsername");
         User user = userDao.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
@@ -33,8 +32,6 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     public User save(User user) throws Exception {
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
-//        if (userDao.existsById(user.getId()))
-//            throw new Exception("User already exists");
         if (userDao.findByUsername(user.getUsername()) != null)
             throw new Exception("Username already exists");
         else

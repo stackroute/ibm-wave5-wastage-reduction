@@ -24,8 +24,6 @@ public class CharityServiceImpl implements CharityService {
     public CharityProfile saveCharity(Charities charity) throws Exception {
         CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getEmail(),charity.getCharityName(),charity.getMobile(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getCertificateName());
         CharityProfile savedCharity = charityRepository.save(charityProfile);
-        if (savedCharity == null)
-            throw new Exception("User Already Exists");
         return savedCharity;
     }
 

@@ -5,7 +5,6 @@ import com.stackroute.authenticationserver.model.CheckResponse;
 import com.stackroute.authenticationserver.model.JwtRequest;
 import com.stackroute.authenticationserver.model.JwtResponse;
 
-import com.stackroute.authenticationserver.model.User;
 import com.stackroute.authenticationserver.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +32,6 @@ public class JwtAuthenticationController {
     @PostMapping(value = "/authenticate")
     public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
-        System.out.println("inside createAuthenticationToken");
-
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
         final UserDetails userDetails = userDetailsService
@@ -52,14 +49,13 @@ public class JwtAuthenticationController {
     }
 
 
-    private void authenticate(String username, String password) throws Exception {
-        System.out.println("inside authenticate");
+    private void authenticate(String username, String password) throws DisabledException, BadCredentialsException {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
+            throw new DisabledException("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+            throw new BadCredentialsException("INVALID_CREDENTIALS", e);
         }
     }
 

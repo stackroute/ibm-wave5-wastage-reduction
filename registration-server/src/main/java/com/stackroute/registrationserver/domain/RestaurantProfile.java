@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-//import org.hibernate.annotations.Entity;
-//import org.springframework.data.annotation.Id;
+
 
 
 @Entity
