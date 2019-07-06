@@ -31,4 +31,10 @@ public class CharityServiceImpl implements CharityService {
     public List<CharityProfile> displayCharity() {
         return charityRepository.findAll();
     }
+
+    @Override
+    public CharityProfile updateCharity(CharityProfile charityProfile) throws Exception {
+       CharityProfile charityProfile1=charityRepository.save(charityProfile);
+        return charityProfile1;
+    }
 }

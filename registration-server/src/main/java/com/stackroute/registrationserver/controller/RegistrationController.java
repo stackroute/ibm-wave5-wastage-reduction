@@ -102,4 +102,33 @@ public class RegistrationController {
         }
         return responseEntity;
     }
+    @PutMapping("restaurant-profile")
+    public ResponseEntity updateRestaurant(@RequestBody RestaurantProfile restaurantProfile)
+
+    {
+        try
+        {
+            return new ResponseEntity(restaurantService.updateRestaurant(restaurantProfile),HttpStatus.CREATED);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+        }
+    }
+
+    @PutMapping("charity-profile")
+    public ResponseEntity updateCharity(@RequestBody CharityProfile charityProfile)
+    {
+        try
+        {
+            return new ResponseEntity(charityService.updateCharity(charityProfile),HttpStatus.CREATED);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+        }
+    }
+
+
+
 }

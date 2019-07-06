@@ -7,8 +7,8 @@ com/stackroute/authenticationserver/model/CheckResponse.class
 com/stackroute/rabbitmq/model/Charity$CharityBuilder.class
 com/stackroute/authenticationserver/model/JwtResponse.class
 com/stackroute/authenticationserver/repository/UserRepository.class
-com/stackroute/authenticationserver/controller/JwtAuthenticationController.class
 com/stackroute/authenticationserver/config/JwtAuthenticationEntryPoint.class
+com/stackroute/authenticationserver/controller/JwtAuthenticationController.class
 com/stackroute/rabbitmq/model/Charity.class
 com/stackroute/authenticationserver/service/JwtUserDetailsService.class
 com/stackroute/rabbitmq/model/Users$UsersBuilder.class
