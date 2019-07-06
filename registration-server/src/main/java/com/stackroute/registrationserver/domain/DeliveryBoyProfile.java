@@ -19,6 +19,7 @@ public class DeliveryBoyProfile {
     @Id
     private String username;
     private String email;
+    private String role;
     private String deliveryBoyName;
     private Long mobile;
     private String address;

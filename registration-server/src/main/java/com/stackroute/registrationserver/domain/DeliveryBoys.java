@@ -14,8 +14,9 @@ public class DeliveryBoys {
     private String username;
     private String password;
     private String email;
+    private String role;
     private String deliveryBoyName;
-    private Long mobile;
+    private long mobile;
     private String address;
     private String licenseNo;
     private String licenseName;

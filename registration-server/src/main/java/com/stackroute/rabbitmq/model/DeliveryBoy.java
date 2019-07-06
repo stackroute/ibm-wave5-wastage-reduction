@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DeliveryBoy {
 
-    private String deliveryBoyName;
-    private String email;
     private String username;
     private String password;
-    private Long mobile;
+    private String email;
+    private String role;
+    private String deliveryBoyName;
+    private long mobile;
     private String address;
     private String licenseNo;
     private String licenseName;

@@ -19,17 +19,29 @@ public class RabbitService {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Value("${rabbitmq.exchange}")
-    private String exchange;
+    @Value("${restaurant.exchange}")
+    private String restaurantExchange;
 
-    @Value("${rabbitmq.routingkey}")
-    private String routingkey;
+    @Value("${restaurant.routingkey}")
+    private String restaurantRoutingkey;
+
+    @Value("${charity.exchange}")
+    private String charityExchange;
+
+    @Value("${charity.routingkey}")
+    private String charityRoutingkey;
+
+//    @Value("${deliveryBoy.exchange}")
+//    private String deliveryBoyExchange;
+//
+//    @Value("${deliveryBoy.routingkey}")
+//    private String deliveryBoyRoutingkey;
 
     public void sendToRestaurantRabbitMq(Restaurants restaurants) {
 
-        Restaurant restaurant = new Restaurant(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRestaurantName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
+        Restaurant restaurant = new Restaurant(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRole(),restaurants.getRestaurantName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
 
-        rabbitTemplate.convertAndSend(exchange, routingkey,restaurant);
+        rabbitTemplate.convertAndSend(restaurantExchange, restaurantRoutingkey,restaurant);
 
         System.out.println("Send msg = " + restaurant);
 
@@ -37,21 +49,21 @@ public class RabbitService {
 
     public void sendToCharityRabbitMq(Charities charities) {
 
-        Charity charity = new Charity(charities.getUsername(),charities.getPassword(),charities.getEmail(),charities.getCharityName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
+        Charity charity = new Charity(charities.getUsername(),charities.getPassword(),charities.getEmail(), charities.getRole(),charities.getCharityName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
 
-        rabbitTemplate.convertAndSend(exchange, routingkey,charity);
+        rabbitTemplate.convertAndSend(charityExchange, charityRoutingkey,charity);
 
         System.out.println("Send msg = " + charity);
 
     }
 
-    public void sendToDeliveryBoyRabbitMq(DeliveryBoys deliveryBoys) {
-
-        DeliveryBoy deliveryBoy = new DeliveryBoy(deliveryBoys.getDeliveryBoyName(),deliveryBoys.getEmail(),deliveryBoys.getUsername(),deliveryBoys.getPassword(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
-        rabbitTemplate.convertAndSend(exchange, routingkey,deliveryBoy);
-
-        System.out.println("Sent CharityMQ = " + deliveryBoy);
-
-    }
+//    public void sendToDeliveryBoyRabbitMq(DeliveryBoys deliveryBoys) {
+//
+//        DeliveryBoy deliveryBoy = new DeliveryBoy(deliveryBoys.getUsername(),deliveryBoys.getPassword(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getDeliveryBoyName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
+//        rabbitTemplate.convertAndSend(deliveryBoyExchange, deliveryBoyRoutingkey,deliveryBoy);
+//
+//        System.out.println("Sent CharityMQ = " + deliveryBoy);
+//
+//    }
 
 }

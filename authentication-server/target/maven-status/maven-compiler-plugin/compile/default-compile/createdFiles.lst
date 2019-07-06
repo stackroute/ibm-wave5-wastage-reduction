@@ -1,5 +1,5 @@
-com/stackroute/authenticationserver/AuthenticationServerApplication.class
 com/stackroute/authenticationserver/service/RestaurantRabbitService.class
+com/stackroute/authenticationserver/AuthenticationServerApplication.class
 com/stackroute/authenticationserver/model/User$UserBuilder.class
 com/stackroute/authenticationserver/model/CheckResponse$CheckResponseBuilder.class
 com/stackroute/authenticationserver/model/User.class

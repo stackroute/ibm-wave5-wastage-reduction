@@ -20,6 +20,7 @@ public class CharityProfile {
         @Id
         private String username;
         private String email;
+        private String role;
         private String charityName;
         private long mobile;
         private String address;
@@ -27,7 +28,6 @@ public class CharityProfile {
         private long foodRequirement;
         private String certificateNo;
         private String certificateName;
-
 }
 
 

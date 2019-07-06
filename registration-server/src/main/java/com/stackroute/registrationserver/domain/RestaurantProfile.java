@@ -20,6 +20,7 @@ public class RestaurantProfile {
     @Id
     private String username;
     private String email;
+    private String role;
     private String restaurantName;
     private long mobile;
     private String address;

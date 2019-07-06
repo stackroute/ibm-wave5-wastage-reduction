@@ -1,6 +1,6 @@
-/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/CharityServerApplication.java
-/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/controller/CharityController.java
-/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsServiceImpl.java
-/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/repository/CharityLogsRepository.java
-/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsService.java
-/home/dipali/Documents/Project/Wastage Reduction Sonar/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/domain/CharityLogs.java
+/home/arathi/waste/datatatata/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/domain/CharityLogs.java
+/home/arathi/waste/datatatata/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/repository/CharityLogsRepository.java
+/home/arathi/waste/datatatata/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/CharityServerApplication.java
+/home/arathi/waste/datatatata/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/controller/CharityController.java
+/home/arathi/waste/datatatata/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsServiceImpl.java
+/home/arathi/waste/datatatata/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsService.java

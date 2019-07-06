@@ -15,40 +15,73 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMqConfig {
 
-    @Value("${rabbitmq.queue}")
-    String queueName;
+    @Value("${restaurant.queue}")
+    String restaurantQueueName;
 
-    @Value("${rabbitmq.exchange}")
-    String exchange;
+    @Value("${restaurant.exchange}")
+    String restaurantExchange;
 
-    @Value("${rabbitmq.routingkey}")
-    private String routingkey;
+    @Value("${restaurant.routingkey}")
+    private String restaurantRoutingkey;
 
     @Bean
-    Queue queue() {
-        return new Queue(queueName, true);
+    Queue restaurantQueue() {
+        System.out.println("inside queue");
+        return new Queue(restaurantQueueName, true);
     }
 
     @Bean
-    DirectExchange exchange() {
-        return new DirectExchange(exchange);
+    DirectExchange restaurantExchange() {
+        System.out.println("inside exchange");
+        return new DirectExchange(restaurantExchange);
     }
 
     @Bean
-    Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+    Binding binding() {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(restaurantQueue()).to(restaurantExchange()).with(restaurantRoutingkey);
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Value("${charity.queue}")
+    String charityQueueName;
+
+    @Value("${charity.exchange}")
+    String charityExchange;
+
+    @Value("${charity.routingkey}")
+    private String charityRoutingkey;
+
+    @Bean
+    Queue charityQueue() {
+        System.out.println("inside queue");
+        return new Queue(charityQueueName, true);
+    }
+
+    @Bean
+    DirectExchange charityExchange() {
+        System.out.println("inside exchange");
+        return new DirectExchange(charityExchange);
+    }
+
+    @Bean
+    Binding charityBinding() {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(charityQueue()).to(charityExchange()).with(charityRoutingkey);
     }
 
     @Bean
     public MessageConverter jsonMessageConverter() {
+        System.out.println("inside jsonMessageConverter");
         return new Jackson2JsonMessageConverter();
     }
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        System.out.println("inside rabbitTemplate");
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
-
 
 }

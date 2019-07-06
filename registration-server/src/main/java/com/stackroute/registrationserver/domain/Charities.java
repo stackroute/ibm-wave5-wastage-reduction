@@ -14,6 +14,7 @@ public class Charities {
     private String username;
     private String password;
     private String email;
+    private String role;
     private String charityName;
     private long mobile;
     private String address;
