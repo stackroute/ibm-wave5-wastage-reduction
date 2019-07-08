@@ -4,8 +4,8 @@ com/stackroute/registrationserver/domain/RestaurantProfile.class
 com/stackroute/rabbitmq/model/Charity$CharityBuilder.class
 com/stackroute/registrationserver/domain/Restaurants$RestaurantsBuilder.class
 com/stackroute/registrationserver/service/CharityService.class
-com/stackroute/registrationserver/service/RestaurantService.class
 com/stackroute/registrationserver/domain/Charities$CharitiesBuilder.class
+com/stackroute/registrationserver/service/RestaurantService.class
 com/stackroute/rabbitmq/model/Charity.class
 com/stackroute/rabbitmq/model/DeliveryBoy.class
 com/stackroute/registrationserver/service/RestaurantServiceImpl.class
@@ -13,8 +13,8 @@ com/stackroute/rabbitmq/model/Restaurant.class
 com/stackroute/rabbitmq/model/Restaurant$RestaurantBuilder.class
 com/stackroute/registrationserver/domain/DeliveryBoyProfile.class
 com/stackroute/registrationserver/repository/CharityRepository.class
-com/stackroute/registrationserver/config/RabbitMqConfig.class
 com/stackroute/registrationserver/domain/DeliveryBoyProfile$DeliveryBoyProfileBuilder.class
+com/stackroute/registrationserver/config/RabbitMqConfig.class
 com/stackroute/registrationserver/domain/Restaurants.class
 com/stackroute/registrationserver/repository/RestaurantRepository.class
 com/stackroute/registrationserver/domain/DeliveryBoys.class

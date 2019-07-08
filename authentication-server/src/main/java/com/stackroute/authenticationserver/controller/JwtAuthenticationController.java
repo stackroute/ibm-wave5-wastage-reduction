@@ -5,7 +5,9 @@ import com.stackroute.authenticationserver.model.CheckResponse;
 import com.stackroute.authenticationserver.model.JwtRequest;
 import com.stackroute.authenticationserver.model.JwtResponse;
 
+import com.stackroute.authenticationserver.model.User;
 import com.stackroute.authenticationserver.service.JwtUserDetailsService;
+import com.stackroute.authenticationserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +31,9 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping(value = "/authenticate")
     public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
@@ -39,7 +44,9 @@ public class JwtAuthenticationController {
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtResponse(token));
+        User user = userService.getUserByUsername(userDetails.getUsername());
+
+        return ResponseEntity.ok(new JwtResponse(token, user));
     }
 
     @GetMapping(value = "/checkUser" )

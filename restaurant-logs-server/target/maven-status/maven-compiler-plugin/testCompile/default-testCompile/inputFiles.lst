@@ -1,4 +1,4 @@
-/home/lasima/Documents/arathi final push/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/repository/RestaurantLogsRepositoryTest.java
-/home/lasima/Documents/arathi final push/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/controller/RestaurantLogsControllerTest.java
-/home/lasima/Documents/arathi final push/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/RestaurantLogsServerApplicationTests.java
-/home/lasima/Documents/arathi final push/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/service/RestaurantLogsServiceTest.java
+/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/controller/RestaurantLogsControllerTest.java
+/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/RestaurantLogsServerApplicationTests.java
+/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/repository/RestaurantLogsRepositoryTest.java
+/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/test/java/com/stackroute/restaurantlogsserver/service/RestaurantLogsServiceTest.java
