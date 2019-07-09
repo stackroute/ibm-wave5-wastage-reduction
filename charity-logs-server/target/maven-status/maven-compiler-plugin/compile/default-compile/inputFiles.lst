@@ -1,6 +1,6 @@
-/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/controller/CharityController.java
-/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsService.java
-/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/repository/CharityLogsRepository.java
-/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/domain/CharityLogs.java
-/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsServiceImpl.java
-/home/arathi/waste/final-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/CharityServerApplication.java
+/home/dipali/Documents/Project/Wastage Reduction Exception/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsServiceImpl.java
+/home/dipali/Documents/Project/Wastage Reduction Exception/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/repository/CharityLogsRepository.java
+/home/dipali/Documents/Project/Wastage Reduction Exception/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/domain/CharityLogs.java
+/home/dipali/Documents/Project/Wastage Reduction Exception/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/controller/CharityController.java
+/home/dipali/Documents/Project/Wastage Reduction Exception/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/CharityServerApplication.java
+/home/dipali/Documents/Project/Wastage Reduction Exception/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/charityserver/service/CharityLogsService.java

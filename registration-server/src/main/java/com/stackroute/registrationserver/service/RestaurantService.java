@@ -10,5 +10,5 @@ public interface RestaurantService {
     RestaurantProfile saveRestaurant(Restaurants restaurant) throws Exception;
     List<RestaurantProfile> displayRestaurants() throws Exception;
     RestaurantProfile updateRestaurant(RestaurantProfile restaurantProfile)throws Exception;
-
+    List<RestaurantProfile> displayRestaurantByUsername(String username) throws  Exception;
 }

@@ -36,6 +36,16 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    public List<RestaurantProfile> displayRestaurantByUsername(String username) throws Exception {
+        List<RestaurantProfile> restaurant = null;
+        restaurant = restaurantRepository.displayRestaurantByUsername(username);
+        if (restaurant.isEmpty()) {
+            throw new Exception("Username Not Found");
+        }
+        return restaurant;
+    }
+
+    @Override
     public RestaurantProfile updateRestaurant(RestaurantProfile restaurantProfile) throws Exception {
         RestaurantProfile restaurantProfile1=restaurantRepository.save(restaurantProfile);
         return restaurantProfile1;

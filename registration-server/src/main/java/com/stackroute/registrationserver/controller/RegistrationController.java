@@ -66,6 +66,34 @@ public class RegistrationController {
         return responseEntity;
     }
 
+    @GetMapping("restaurant-profile/{username}")
+    public ResponseEntity<List<RestaurantProfile>> displayRestaurantByUsername(@PathVariable String username) throws Exception
+    {
+        ResponseEntity responseEntity;
+
+        try {
+            List<RestaurantProfile> restaurant = restaurantService.displayRestaurantByUsername(username);
+            return new ResponseEntity<List<RestaurantProfile>>(restaurant, HttpStatus.OK);
+        } catch (Exception ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
+            ex.getMessage();
+        }
+        return responseEntity;
+    }
+
+    @PutMapping("restaurant-profile")
+    public ResponseEntity updateRestaurant(@RequestBody RestaurantProfile restaurantProfile)
+
+    {
+        try
+        {
+            return new ResponseEntity(restaurantService.updateRestaurant(restaurantProfile),HttpStatus.CREATED);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+        }
+    }
 
     @PostMapping("charity-profile")
     public ResponseEntity<CharityProfile> saveCharity(@RequestBody Charities charity) throws Exception {
@@ -102,18 +130,20 @@ public class RegistrationController {
         }
         return responseEntity;
     }
-    @PutMapping("restaurant-profile")
-    public ResponseEntity updateRestaurant(@RequestBody RestaurantProfile restaurantProfile)
 
+    @GetMapping("charity-profile/{username}")
+    public ResponseEntity<List<CharityProfile>> displayCharityByUsername(@PathVariable String username) throws Exception
     {
-        try
-        {
-            return new ResponseEntity(restaurantService.updateRestaurant(restaurantProfile),HttpStatus.CREATED);
+        ResponseEntity responseEntity;
+
+        try {
+            List<CharityProfile> charity = charityService.displayCharityByUsername(username);
+            return new ResponseEntity<List<CharityProfile>>(charity, HttpStatus.OK);
+        } catch (Exception ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
+            ex.getMessage();
         }
-        catch(Exception e)
-        {
-            return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-        }
+        return responseEntity;
     }
 
     @PutMapping("charity-profile")
@@ -128,7 +158,4 @@ public class RegistrationController {
             return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
         }
     }
-
-
-
 }

@@ -29,6 +29,7 @@ public class CharityServiceImpl implements CharityService {
 
     @Override
     public List<CharityProfile> displayCharity() {
+
         return charityRepository.findAll();
     }
 
@@ -36,5 +37,15 @@ public class CharityServiceImpl implements CharityService {
     public CharityProfile updateCharity(CharityProfile charityProfile) throws Exception {
        CharityProfile charityProfile1=charityRepository.save(charityProfile);
         return charityProfile1;
+    }
+
+    @Override
+    public List<CharityProfile> displayCharityByUsername(String username) throws Exception {
+        List<CharityProfile> charity = null;
+        charity = charityRepository.displayCharityByUsername(username);
+        if (charity.isEmpty()) {
+            throw new Exception("Username Not Found");
+        }
+        return charity;
     }
 }
