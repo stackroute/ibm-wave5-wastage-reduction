@@ -9,17 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Charity {
+public class DeliveryBoyMQ {
 
     private String username;
     private String password;
     private String email;
     private String role;
-    private String charityName;
+    private String deliveryBoyName;
     private long mobile;
     private String address;
-    private String location;
-    private long foodRequirement;
-    private String certificateNo;
-    private String certificateName;
+    private String licenseNo;
+    private String licenseName;
 }

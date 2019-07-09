@@ -1,11 +1,9 @@
 package com.stackroute.registrationserver.controller;
 
-import com.stackroute.rabbitmq.model.Restaurant;
-import com.stackroute.registrationserver.domain.Charities;
-import com.stackroute.registrationserver.domain.CharityProfile;
-import com.stackroute.registrationserver.domain.RestaurantProfile;
-import com.stackroute.registrationserver.domain.Restaurants;
+import com.stackroute.rabbitmq.model.RestaurantMQ;
+import com.stackroute.registrationserver.domain.*;
 import com.stackroute.registrationserver.service.CharityService;
+import com.stackroute.registrationserver.service.DeliveryBoyService;
 import com.stackroute.registrationserver.service.RabbitService;
 import com.stackroute.registrationserver.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,9 @@ public class RegistrationController {
 
     @Autowired
     private CharityService charityService;
+
+    @Autowired
+    private DeliveryBoyService deliveryBoyService;
 
     @Autowired
     private RabbitService rabbitService;
@@ -49,7 +50,7 @@ public class RegistrationController {
         return responseEntity;
     }
     @GetMapping("restaurant-profile")
-    public ResponseEntity<List<Restaurant>> displayRestaurant()
+    public ResponseEntity<List<RestaurantMQ>> displayRestaurant()
     {
         ResponseEntity responseEntity;
 
@@ -157,5 +158,33 @@ public class RegistrationController {
         {
             return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
         }
+    }
+
+    @PostMapping("deliveryBoy-profile")
+    public ResponseEntity<DeliveryBoyProfile> saveDeliveryBoy(@RequestBody DeliveryBoys deliveryBoys) throws Exception {
+        ResponseEntity responseEntity;
+        try {
+            DeliveryBoyProfile returnDeliveryBoy = deliveryBoyService.saveDeliveryBoy(deliveryBoys);
+            responseEntity = new ResponseEntity<DeliveryBoyProfile>(returnDeliveryBoy, HttpStatus.CREATED);
+            rabbitService.sendToDeliveryBoyMQ(deliveryBoys);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
+        }
+
+        return responseEntity;
+    }
+
+    @GetMapping("deliveryBoy-profile")
+    public ResponseEntity<DeliveryBoyProfile> displayDeliveryBoy(@RequestParam String username)
+    {
+        ResponseEntity responseEntity;
+
+        try{
+            responseEntity=new ResponseEntity(deliveryBoyService.displayDeliveryBoy(username),HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
     }
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Restaurant {
+public class RestaurantMQ {
 
     private String username;
     private String password;

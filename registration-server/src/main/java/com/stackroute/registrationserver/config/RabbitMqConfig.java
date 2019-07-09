@@ -71,6 +71,33 @@ public class RabbitMqConfig {
         return BindingBuilder.bind(charityQueue()).to(charityExchange()).with(charityRoutingkey);
     }
 
+    @Value("${deliveryBoy.queue}")
+    String deliveryBoyQueueName;
+
+    @Value("${deliveryBoy.exchange}")
+    String deliveryBoyExchange;
+
+    @Value("${deliveryBoy.routingkey}")
+    private String deliveryBoyRoutingkey;
+
+    @Bean
+    Queue deliveryBoyQueue() {
+        System.out.println("inside queue");
+        return new Queue(deliveryBoyQueueName, true);
+    }
+
+    @Bean
+    DirectExchange deliveryBoyExchange() {
+        System.out.println("inside exchange");
+        return new DirectExchange(deliveryBoyExchange);
+    }
+
+    @Bean
+    Binding deliveryBoyBinding() {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(deliveryBoyQueue()).to(deliveryBoyExchange()).with(deliveryBoyRoutingkey);
+    }
+
     @Bean
     public MessageConverter jsonMessageConverter() {
         System.out.println("inside jsonMessageConverter");
