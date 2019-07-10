@@ -46,9 +46,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public RestaurantProfile updateRestaurant(RestaurantProfile restaurantProfile) throws Exception {
-        RestaurantProfile restaurantProfile1=restaurantRepository.save(restaurantProfile);
-        return restaurantProfile1;
+    public RestaurantProfile updateRestaurant(Restaurants restaurant) throws Exception {
+        RestaurantProfile restaurantProfile = new RestaurantProfile(restaurant.getUsername(),restaurant.getEmail(),restaurant.getRole(),restaurant.getRestaurantName(),restaurant.getMobile(),restaurant.getAddress(),restaurant.getLocation(),restaurant.getCertificateNo(),restaurant.getCertificateName());
+
+        return restaurantRepository.save(restaurantProfile);
     }
 
 

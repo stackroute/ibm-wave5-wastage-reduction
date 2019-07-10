@@ -30,22 +30,22 @@ public class SendOutput {
     @Autowired
     public DeliveryBoyRepository deliveryBoyRepository;
 
-    @Value("${restaurant.rabbitmq.exchange}")
+    @Value("${restaurant.exchange}")
     private String restaurantExchange;
 
-    @Value("${restaurantLogs.rabbitmq.routingkey}")
+    @Value("${restaurantLogs.routingkey}")
     private String restaurantRoutingkey;
 
-    @Value("${charity.rabbitmq.exchange}")
+    @Value("${charity.exchange}")
     private String charityExchange;
 
-    @Value("${charityLogs.rabbitmq.routingkey}")
+    @Value("${charityLogs.routingkey}")
     private String charityRoutingkey;
 
-    @Value("${deliveryBoy.rabbitmq.exchange}")
+    @Value("${deliveryBoy.exchange}")
     private String deliveryBoyExchange;
 
-    @Value("${deliveryBoyLogs.rabbitmq.routingkey}")
+    @Value("${deliveryBoyLogs.routingkey}")
     private String deliveryBoyRoutingkey;
 
     public void sendToRestaurantLogs() {

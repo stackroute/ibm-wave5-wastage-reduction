@@ -9,6 +9,6 @@ public interface CharityService {
 
     CharityProfile saveCharity(Charities charity) throws Exception;
     List<CharityProfile> displayCharity();
-    CharityProfile updateCharity(CharityProfile charityProfile)throws Exception;
+    CharityProfile updateCharity(Charities charity)throws Exception;
     List<CharityProfile> displayCharityByUsername(String username) throws  Exception;
 }

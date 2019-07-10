@@ -83,15 +83,15 @@ public class RegistrationController {
     }
 
     @PutMapping("restaurant-profile")
-    public ResponseEntity updateRestaurant(@RequestBody RestaurantProfile restaurantProfile)
+    public ResponseEntity updateRestaurant(@RequestBody Restaurants restaurant)
 
     {
 
         ResponseEntity responseEntity;
         try
         {
-            responseEntity = new ResponseEntity(restaurantService.updateRestaurant(restaurantProfile),HttpStatus.CREATED);
-
+            responseEntity = new ResponseEntity(restaurantService.updateRestaurant(restaurant),HttpStatus.CREATED);
+            rabbitService.sendToRestaurantUpdateRabbitMq(restaurant);
 
             return responseEntity;
         }
@@ -153,11 +153,12 @@ public class RegistrationController {
     }
 
     @PutMapping("charity-profile")
-    public ResponseEntity updateCharity(@RequestBody CharityProfile charityProfile)
+    public ResponseEntity updateCharity(@RequestBody Charities charity)
     {
         try
         {
-            return new ResponseEntity(charityService.updateCharity(charityProfile),HttpStatus.CREATED);
+            return new ResponseEntity(charityService.updateCharity(charity),HttpStatus.CREATED);
+            rabbitService.sendToCharityUpdateRabbitMq(charity);
         }
         catch (Exception e)
         {
@@ -188,6 +189,21 @@ public class RegistrationController {
             responseEntity=new ResponseEntity(deliveryBoyService.displayDeliveryBoy(username),HttpStatus.CREATED);
         }
         catch (Exception e){
+            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+    @PutMapping("deliveryBoy-profile")
+    public ResponseEntity updateDeliveryBoy(@RequestBody DeliveryBoys deliveryBoys)
+    {
+        ResponseEntity responseEntity;
+        try{
+            responseEntity=new ResponseEntity(deliveryBoyService.updateDeliveryBoy(deliveryBoys),HttpStatus.CREATED);
+            rabbitService.sendToDeliveryBoyUpdateMQ(deliveryBoys);
+        }
+        catch (Exception e)
+        {
             responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
         }
         return responseEntity;

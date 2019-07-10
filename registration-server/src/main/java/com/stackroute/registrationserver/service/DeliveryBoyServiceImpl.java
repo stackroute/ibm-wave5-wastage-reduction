@@ -37,4 +37,10 @@ public class DeliveryBoyServiceImpl implements DeliveryBoyService {
         return deliveryBoyRepository.findById(username);
     }
 
+    @Override
+    public DeliveryBoyProfile updateDeliveryBoy(DeliveryBoys deliveryBoys) throws Exception {
+        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getDeliveryBoyName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
+        return deliveryBoyRepository.save(deliveryBoyProfile);
+    }
+
 }

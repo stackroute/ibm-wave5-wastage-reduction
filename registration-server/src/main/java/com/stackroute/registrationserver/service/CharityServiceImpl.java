@@ -34,9 +34,9 @@ public class CharityServiceImpl implements CharityService {
     }
 
     @Override
-    public CharityProfile updateCharity(CharityProfile charityProfile) throws Exception {
-       CharityProfile charityProfile1=charityRepository.save(charityProfile);
-        return charityProfile1;
+    public CharityProfile updateCharity(Charities charity) throws Exception {
+        CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getEmail(),charity.getRole(),charity.getCharityName(),charity.getMobile(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getCertificateName());
+        return charityRepository.save(charityProfile);
     }
 
     @Override

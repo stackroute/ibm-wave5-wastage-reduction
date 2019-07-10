@@ -26,10 +26,10 @@ public class RabbitMQConfig {
         return new DirectExchange(restaurantExchange);
     }
 
-    @Value("${restaurantLogs.rabbitmq.queue}")
+    @Value("${restaurantLogs.queue}")
     String restaurantQueue;
 
-    @Value("${restaurantLogs.rabbitmq.routingkey}")
+    @Value("${restaurantLogs.routingkey}")
     private String restaurantRoutingkey;
 
     @Bean
@@ -73,10 +73,10 @@ public class RabbitMQConfig {
         return new DirectExchange(charityExchange);
     }
 
-    @Value("${charityLogs.rabbitmq.queue}")
+    @Value("${charityLogs.queue}")
     String charityQueue;
 
-    @Value("${charityLogs.rabbitmq.routingkey}")
+    @Value("${charityLogs.routingkey}")
     private String charityRoutingkey;
 
     @Bean
@@ -120,10 +120,10 @@ public class RabbitMQConfig {
         return new DirectExchange(deliveryBoyExchange);
     }
 
-    @Value("${deliveryBoyLogs.rabbitmq.queue}")
+    @Value("${deliveryBoyLogs.queue}")
     String deliveryBoyQueue;
 
-    @Value("${deliveryBoyLogs.rabbitmq.routingkey}")
+    @Value("${deliveryBoyLogs.routingkey}")
     private String deliveryBoyRoutingkey;
 
     @Bean
