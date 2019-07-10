@@ -1,7 +1,0 @@
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/service/RestaurantLogsServiceImpl.java
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/exceptions/RestaurantIdAlreadyExistsException.java
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/repository/RestaurantLogsRepository.java
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/service/RestaurantLogsService.java
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/controller/RestaurantLogsController.java
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/RestaurantLogsServerApplication.java
-/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/restaurant-logs-server/src/main/java/com/stackroute/restaurantlogsserver/domain/RestaurantLogs.java

@@ -33,7 +33,9 @@
 		<module>registration-server</module>
 		<module>authentication-server</module>
 		<module>charity-logs-server</module>
-		<module>restaurant-logs-server</module>
+		<module>restaurant-logs-service</module>
+		<module>deliveryBoy-logs-service</module>
+		<module>routing-service</module>
 	</modules>
 
 	<dependencies>

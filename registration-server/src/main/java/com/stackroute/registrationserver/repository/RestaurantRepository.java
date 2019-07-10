@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface RestaurantRepository extends JpaRepository<RestaurantProfile, String> {
     @Query(value = "SELECT * FROM restaurant_profile WHERE username = ?1", nativeQuery = true)
-    public List<RestaurantProfile> displayRestaurantByUsername(String username);
+    public RestaurantProfile displayRestaurantByUsername(String username);
 }

@@ -68,13 +68,13 @@ public class RegistrationController {
     }
 
     @GetMapping("restaurant-profile/{username}")
-    public ResponseEntity<List<RestaurantProfile>> displayRestaurantByUsername(@PathVariable String username) throws Exception
+    public ResponseEntity<RestaurantProfile> displayRestaurantByUsername(@PathVariable String username) throws Exception
     {
         ResponseEntity responseEntity;
 
         try {
-            List<RestaurantProfile> restaurant = restaurantService.displayRestaurantByUsername(username);
-            return new ResponseEntity<List<RestaurantProfile>>(restaurant, HttpStatus.OK);
+            RestaurantProfile restaurant = restaurantService.displayRestaurantByUsername(username);
+            return new ResponseEntity<RestaurantProfile>(restaurant, HttpStatus.OK);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
             ex.getMessage();

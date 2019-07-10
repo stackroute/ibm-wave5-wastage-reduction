@@ -49,7 +49,7 @@ services:
 
   restaurant-logs-service:
     image: restaurant-logs-service:1.0
-    build: restaurant-logs-server/
+    build: restaurant-logs-service/
     depends_on:
       - mongo
     restart: always
@@ -114,10 +114,18 @@ services:
       - 15672:15672
     volumes:
       - ../data/rabbitmq:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
-#      - ./rabbit_localhost_2019-7-3.json:/opt/definitions.json:ro
-#      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
     environment:
       RABBITMQ_ERLANG_COOKIE: 6085e2412b6fa88647466c6a81c0cea0
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
       RABBITMQ_DEFAULT_VHOST: /
+
+  neo4j:
+    image: neo4j:3.5
+    restart: always
+    hostname: localhost
+    network_mode: "host"
+    ports:
+      - 7474:7474
+      - 7687:7687
+

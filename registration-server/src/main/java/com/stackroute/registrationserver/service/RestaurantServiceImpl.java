@@ -36,10 +36,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<RestaurantProfile> displayRestaurantByUsername(String username) throws Exception {
-        List<RestaurantProfile> restaurant = null;
-        restaurant = restaurantRepository.displayRestaurantByUsername(username);
-        if (restaurant.isEmpty()) {
+    public RestaurantProfile displayRestaurantByUsername(String username) throws Exception {
+//        List<RestaurantProfile> restaurant = null;
+        RestaurantProfile restaurant = restaurantRepository.displayRestaurantByUsername(username);
+        if (restaurant == null) {
             throw new Exception("Username Not Found");
         }
         return restaurant;
