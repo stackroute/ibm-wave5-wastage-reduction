@@ -49,7 +49,7 @@ services:
 
   restaurant-logs-service:
     image: restaurant-logs-service:1.0
-    build: restaurant-logs-service/
+    build: restaurant-logs-server/
     depends_on:
       - mongo
     restart: always

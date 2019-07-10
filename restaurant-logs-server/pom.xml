@@ -8,9 +8,9 @@
 		<version>1.0.0</version>
 	</parent>
 	<groupId>com.stackroute</groupId>
-	<artifactId>restaurant-logs-service</artifactId>
+	<artifactId>restaurant-logs-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>restaurant-logs-service</name>
+	<name>restaurant-logs-server</name>
 	<description>Restaurant Logs Service</description>
 
 	<properties>
