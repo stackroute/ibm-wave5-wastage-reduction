@@ -86,9 +86,14 @@ public class RegistrationController {
     public ResponseEntity updateRestaurant(@RequestBody RestaurantProfile restaurantProfile)
 
     {
+
+        ResponseEntity responseEntity;
         try
         {
-            return new ResponseEntity(restaurantService.updateRestaurant(restaurantProfile),HttpStatus.CREATED);
+            responseEntity = new ResponseEntity(restaurantService.updateRestaurant(restaurantProfile),HttpStatus.CREATED);
+
+
+            return responseEntity;
         }
         catch(Exception e)
         {

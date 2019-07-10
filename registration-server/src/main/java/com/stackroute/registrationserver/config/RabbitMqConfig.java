@@ -15,11 +15,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMqConfig {
 
-    @Value("${restaurant.queue}")
-    String restaurantQueueName;
-
     @Value("${restaurant.exchange}")
     String restaurantExchange;
+
+    @Bean
+    DirectExchange restaurantExchange() {
+        System.out.println("inside exchange");
+        return new DirectExchange(restaurantExchange);
+    }
+
+    @Value("${restaurant.queue}")
+    String restaurantQueueName;
 
     @Value("${restaurant.routingkey}")
     private String restaurantRoutingkey;
@@ -31,24 +37,42 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    DirectExchange restaurantExchange() {
-        System.out.println("inside exchange");
-        return new DirectExchange(restaurantExchange);
-    }
-
-    @Bean
-    Binding binding() {
+    Binding restaurantBinding() {
         System.out.println("inside binding");
         return BindingBuilder.bind(restaurantQueue()).to(restaurantExchange()).with(restaurantRoutingkey);
     }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Value("${restaurant.update.queue}")
+    String restaurantUpdateQueueName;
 
-    @Value("${charity.queue}")
-    String charityQueueName;
+    @Value("${restaurant.update.routingkey}")
+    private String restaurantUpdateRoutingkey;
+
+    @Bean
+    Queue restaurantUpdateQueue() {
+        System.out.println("inside queue");
+        return new Queue(restaurantUpdateQueueName, true);
+    }
+
+    @Bean
+    Binding restaurantUpdateBinding() {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(restaurantUpdateQueue()).to(restaurantExchange()).with(restaurantUpdateRoutingkey);
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Value("${charity.exchange}")
     String charityExchange;
+
+    @Bean
+    DirectExchange charityExchange() {
+        System.out.println("inside exchange");
+        return new DirectExchange(charityExchange);
+    }
+
+    @Value("${charity.queue}")
+    String charityQueueName;
 
     @Value("${charity.routingkey}")
     private String charityRoutingkey;
@@ -60,22 +84,43 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    DirectExchange charityExchange() {
-        System.out.println("inside exchange");
-        return new DirectExchange(charityExchange);
-    }
-
-    @Bean
     Binding charityBinding() {
         System.out.println("inside binding");
         return BindingBuilder.bind(charityQueue()).to(charityExchange()).with(charityRoutingkey);
     }
 
-    @Value("${deliveryBoy.queue}")
-    String deliveryBoyQueueName;
+    @Value("${charity.update.queue}")
+    String charityUpdateQueueName;
+
+    @Value("${charity.update.routingkey}")
+    private String charityUpdateRoutingkey;
+
+    @Bean
+    Queue charityUpdateQueue() {
+        System.out.println("inside queue");
+        return new Queue(charityUpdateQueueName, true);
+    }
+
+    @Bean
+    Binding charityUpdateBinding() {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(charityUpdateQueue()).to(charityExchange()).with(charityUpdateRoutingkey);
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     @Value("${deliveryBoy.exchange}")
     String deliveryBoyExchange;
+
+    @Bean
+    DirectExchange deliveryBoyExchange() {
+        System.out.println("inside exchange");
+        return new DirectExchange(deliveryBoyExchange);
+    }
+
+    @Value("${deliveryBoy.queue}")
+    String deliveryBoyQueueName;
 
     @Value("${deliveryBoy.routingkey}")
     private String deliveryBoyRoutingkey;
@@ -87,16 +132,29 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    DirectExchange deliveryBoyExchange() {
-        System.out.println("inside exchange");
-        return new DirectExchange(deliveryBoyExchange);
-    }
-
-    @Bean
     Binding deliveryBoyBinding() {
         System.out.println("inside binding");
         return BindingBuilder.bind(deliveryBoyQueue()).to(deliveryBoyExchange()).with(deliveryBoyRoutingkey);
     }
+
+    @Value("${deliveryBoy.update.queue}")
+    String deliveryBoyUpdateQueueName;
+
+    @Value("${deliveryBoy.update.routingkey}")
+    private String deliveryBoyUpdateRoutingkey;
+
+    @Bean
+    Queue deliveryBoyUpdateQueue() {
+        System.out.println("inside queue");
+        return new Queue(deliveryBoyUpdateQueueName, true);
+    }
+
+    @Bean
+    Binding deliveryBoyUpdateBinding() {
+        System.out.println("inside binding");
+        return BindingBuilder.bind(deliveryBoyUpdateQueue()).to(deliveryBoyExchange()).with(deliveryBoyUpdateRoutingkey);
+    }
+
 
     @Bean
     public MessageConverter jsonMessageConverter() {

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@RabbitListener(queues = "${saveDeliveryBoy.rabbitmq.queue}")
+@RabbitListener(queues = "${deliveryBoy.update.queue}")
 public class DeliveryBoyListener {
 
     @Autowired
