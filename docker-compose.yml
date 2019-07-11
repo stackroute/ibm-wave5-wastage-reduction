@@ -52,6 +52,7 @@ services:
     build: restaurant-logs-server/
     depends_on:
       - mongo
+      - rabbitmq
     restart: always
     network_mode: "host"
     hostname: localhost
@@ -63,11 +64,24 @@ services:
     build: charity-logs-server/
     depends_on:
       - mongo
+      - rabbitmq
     restart: always
     network_mode: "host"
     hostname: localhost
     ports:
       - 8070:8070
+
+  deliveryboy-logs-service:
+    image: deliveryboy-logs-service:1.0
+    build: deliveryBoy-logs-service/
+    depends_on:
+      - mongo
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8040:8040
 
   registration-service:
     image: registration-service:1.0
@@ -80,6 +94,18 @@ services:
     hostname: localhost
     ports:
       - 8080:8080
+
+  routing-service:
+    image: routing-service:1.0
+    build: routing-server/
+    depends_on:
+      - neo4j
+      - rabbitmq
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8050:8050
 
   mysql:
     image: mysql:5.7
@@ -96,6 +122,8 @@ services:
       "
     ports:
       - 3306:3306
+    volumes:
+      - ../data/mysql:/var/lib/mysql
 
   mongo:
     image: mongo
@@ -128,4 +156,7 @@ services:
     ports:
       - 7474:7474
       - 7687:7687
+    volumes:
+      - ../data/neo4j/data:/data
+      - ../data/neo4j/logs:/logs
 

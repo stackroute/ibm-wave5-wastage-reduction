@@ -49,26 +49,26 @@ public class RegistrationController {
 
         return responseEntity;
     }
+//    @GetMapping("restaurant-profile")
+//    public ResponseEntity<List<RestaurantMQ>> displayRestaurant()
+//    {
+//        ResponseEntity responseEntity;
+//
+//        try{
+//
+//            responseEntity=new ResponseEntity(restaurantService.displayRestaurants(),HttpStatus.CREATED);
+//
+//        }
+//        catch (Exception e){
+//
+//            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+//
+//        }
+//        return responseEntity;
+//    }
+
     @GetMapping("restaurant-profile")
-    public ResponseEntity<List<RestaurantMQ>> displayRestaurant()
-    {
-        ResponseEntity responseEntity;
-
-        try{
-
-            responseEntity=new ResponseEntity(restaurantService.displayRestaurants(),HttpStatus.CREATED);
-
-        }
-        catch (Exception e){
-
-            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-
-        }
-        return responseEntity;
-    }
-
-    @GetMapping("restaurant-profile/{username}")
-    public ResponseEntity<RestaurantProfile> displayRestaurantByUsername(@PathVariable String username) throws Exception
+    public ResponseEntity<RestaurantProfile> displayRestaurantByUsername(@RequestParam String username) throws Exception
     {
         ResponseEntity responseEntity;
 
@@ -119,26 +119,26 @@ public class RegistrationController {
 
         return responseEntity;
     }
+//    @GetMapping("charity-profile")
+//    public ResponseEntity<List<CharityProfile>> displayCharity()
+//    {
+//        ResponseEntity responseEntity;
+//
+//        try{
+//
+//            responseEntity=new ResponseEntity(charityService.displayCharity(),HttpStatus.CREATED);
+//
+//        }
+//        catch (Exception e){
+//
+//            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
+//
+//        }
+//        return responseEntity;
+//    }
+
     @GetMapping("charity-profile")
-    public ResponseEntity<List<CharityProfile>> displayCharity()
-    {
-        ResponseEntity responseEntity;
-
-        try{
-
-            responseEntity=new ResponseEntity(charityService.displayCharity(),HttpStatus.CREATED);
-
-        }
-        catch (Exception e){
-
-            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-
-        }
-        return responseEntity;
-    }
-
-    @GetMapping("charity-profile/{username}")
-    public ResponseEntity<List<CharityProfile>> displayCharityByUsername(@PathVariable String username) throws Exception
+    public ResponseEntity<List<CharityProfile>> displayCharityByUsername(@RequestParam String username) throws Exception
     {
         ResponseEntity responseEntity;
 
@@ -157,8 +157,9 @@ public class RegistrationController {
     {
         try
         {
-            return new ResponseEntity(charityService.updateCharity(charity),HttpStatus.CREATED);
             rabbitService.sendToCharityUpdateRabbitMq(charity);
+            return new ResponseEntity(charityService.updateCharity(charity),HttpStatus.CREATED);
+
         }
         catch (Exception e)
         {

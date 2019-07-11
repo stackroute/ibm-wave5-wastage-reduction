@@ -1,7 +1,7 @@
 FROM openjdk:11-jdk-stretch
 
-ADD /target/routing-service-0.0.1-SNAPSHOT.jar /src/main/routing-service-0.0.1-SNAPSHOT.jar
+ADD /target/routing-server-0.0.1-SNAPSHOT.jar /usr/src/routing-server-0.0.1-SNAPSHOT.jar
 
-WORKDIR /src/main
+WORKDIR /usr/src
 
-ENTRYPOINT ["java","-jar","routing-service-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","routing-server-0.0.1-SNAPSHOT.jar"]
