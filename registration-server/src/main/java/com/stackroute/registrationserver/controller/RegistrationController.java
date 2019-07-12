@@ -138,13 +138,13 @@ public class RegistrationController {
 //    }
 
     @GetMapping("charity-profile")
-    public ResponseEntity<List<CharityProfile>> displayCharityByUsername(@RequestParam String username) throws Exception
+    public ResponseEntity<CharityProfile> displayCharityByUsername(@RequestParam String username) throws Exception
     {
         ResponseEntity responseEntity;
 
         try {
-            List<CharityProfile> charity = charityService.displayCharityByUsername(username);
-            return new ResponseEntity<List<CharityProfile>>(charity, HttpStatus.OK);
+            CharityProfile charity = charityService.displayCharityByUsername(username);
+            return new ResponseEntity<CharityProfile>(charity, HttpStatus.OK);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
             ex.getMessage();

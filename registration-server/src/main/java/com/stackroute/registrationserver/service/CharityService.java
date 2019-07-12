@@ -10,5 +10,5 @@ public interface CharityService {
     CharityProfile saveCharity(Charities charity) throws Exception;
     List<CharityProfile> displayCharity();
     CharityProfile updateCharity(Charities charity)throws Exception;
-    List<CharityProfile> displayCharityByUsername(String username) throws  Exception;
+    CharityProfile displayCharityByUsername(String username) throws  Exception;
 }

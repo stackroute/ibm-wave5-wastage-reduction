@@ -40,10 +40,9 @@ public class CharityServiceImpl implements CharityService {
     }
 
     @Override
-    public List<CharityProfile> displayCharityByUsername(String username) throws Exception {
-        List<CharityProfile> charity = null;
-        charity = charityRepository.displayCharityByUsername(username);
-        if (charity.isEmpty()) {
+    public CharityProfile displayCharityByUsername(String username) throws Exception {
+        CharityProfile charity = charityRepository.displayCharityByUsername(username);
+        if (charity.getUsername()==null) {
             throw new Exception("Username Not Found");
         }
         return charity;

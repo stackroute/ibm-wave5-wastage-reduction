@@ -66,8 +66,8 @@ public interface DeliveryBoyRepository extends Neo4jRepository<DeliveryBoy, Long
     public List<DeliveryBoy> getSortedDeliveryBoysByDistanceAndAvailability(@Param("charityId") String charityId);
 
 
-    @Query("MATCH (d { deliveryBoyId: {deliveryBoyId }}) SET d.status = {status}, d.location = {location}")
-    public void updateDeliveryBoyStatusAndLocation(@Param("deliveryBoyId") String deliveryBoyId, @Param("status") String status, @Param("location") String location);
+    @Query("MATCH (d:DeliveryBoy) WHERE d.deliveryBoyId = {deliveryBoyId} SET d.status = {status}, d.location = {location}")
+    public DeliveryBoy updateDeliveryBoyStatusAndLocation(@Param("deliveryBoyId") String deliveryBoyId, @Param("status") String status, @Param("location") String location);
 
 
     @Query("MATCH (d : DeliveryBoy) SET d.status='available'")

@@ -55,9 +55,8 @@ public class DonationServiceImpl implements DonationService
 
 
     @Override
-    public String updateDeliveryBoyStatusAndLocation(String deliveryBoyId, String status, String location) {
-        deliveryBoyRepository.updateDeliveryBoyStatusAndLocation(deliveryBoyId,status,location);
-        return "Successfully Updated Status";
+    public DeliveryBoy updateDeliveryBoyStatusAndLocation(String deliveryBoyId, String status, String location) {
+        return deliveryBoyRepository.updateDeliveryBoyStatusAndLocation(deliveryBoyId,status,location);
     }
 
 

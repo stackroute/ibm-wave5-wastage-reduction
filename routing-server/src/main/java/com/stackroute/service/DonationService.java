@@ -21,7 +21,7 @@ public interface DonationService {
 
     public String updateRestaurantFoodAvailability(String restaurantId, String foodAvailability);
 
-    public String updateDeliveryBoyStatusAndLocation(String deliveryBoyId, String status, String location);
+    public DeliveryBoy updateDeliveryBoyStatusAndLocation(String deliveryBoyId, String status, String location);
 
     public Charity findByCharityName(String charityName);
 

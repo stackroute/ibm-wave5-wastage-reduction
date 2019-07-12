@@ -36,7 +36,7 @@ public interface CharityRepository extends Neo4jRepository<Charity, Long> {
     public void removeRestaurantCharityRelation(@Param("charityId") String charityId);
 
 
-    @Query("MATCH (c:Charity) RETURN c ORDER BY c.precedence, c.charityId DESC")
+    @Query("MATCH (c:Charity) RETURN c ORDER BY c.precedence DESC")
     public List<Charity> getSortedCharitiesByPrecedence();
 
 

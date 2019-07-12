@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface CharityRepository extends JpaRepository<CharityProfile, String> {
     @Query(value = "SELECT * FROM charity_profile WHERE username = ?1", nativeQuery = true)
-    public List<CharityProfile> displayCharityByUsername(String username);
+    public CharityProfile displayCharityByUsername(String username);
 }

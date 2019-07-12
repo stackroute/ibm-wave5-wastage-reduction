@@ -1,9 +1,6 @@
 package com.stackroute.controller;
 
-import com.stackroute.domain.Charity;
-import com.stackroute.domain.DeliveryBoy;
-import com.stackroute.domain.Restaurant;
-import com.stackroute.domain.RestaurantActivity;
+import com.stackroute.domain.*;
 import com.stackroute.repository.DeliveryBoyRepository;
 import com.stackroute.service.DonationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +50,9 @@ public class DonationController {
     }
 
 
-    @RequestMapping("/updateDeliveryBoyDetails")
-    public String updateDeliveryBoyStatusAndLocation(@RequestParam String deliveryBoyId, @RequestParam String status, @RequestParam String location) {
-        return donationService.updateDeliveryBoyStatusAndLocation(deliveryBoyId, status, location);
+    @PutMapping("/updateDeliveryBoyDetails")
+    public ResponseEntity updateDeliveryBoyStatusAndLocation(@RequestBody DeliveryBoyActivity deliveryBoyActivity) {
+        return new ResponseEntity((donationService.updateDeliveryBoyStatusAndLocation(deliveryBoyActivity.getDeliveryboyId(),deliveryBoyActivity.getStatus(),deliveryBoyActivity.getLocation())),HttpStatus.ACCEPTED);
     }
 
 
