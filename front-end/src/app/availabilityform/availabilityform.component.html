@@ -1,0 +1,28 @@
+ <div class="container p-3">
+  <div class="card">
+    <div class="card-header">
+    <h2>Donation</h2>
+    </div>
+    <div class="card-body">
+    <table class="m-auto">
+    <tr>
+    <th>Vag Availability</th>
+    <td><input type="number" class="form-control form-control-lg rounded-0" name="veg" [(ngModel)]="veg"></td>
+    </tr>
+    <tr>
+    <th>Non-Veg Availability</th>
+    <td><input type="number" class="form-control form-control-lg rounded-0" name="nonveg" [(ngModel)]="nonveg"></td>
+    </tr>
+    <tr>
+    <th>Total Availability</th>
+    <td><h5><label >{{ veg+nonveg }}</label></h5></td>
+    </tr>
+    <tr>
+    <th></th>
+    <td><button type="submit" class="btn btn-success btn-lg">Submit</button></td>
+    </tr>
+    </table>
+    </div>
+  </div>
+</div>
+       

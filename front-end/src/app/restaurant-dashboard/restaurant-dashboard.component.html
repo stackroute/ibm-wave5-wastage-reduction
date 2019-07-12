@@ -1,0 +1,159 @@
+<div class="w3-bar" style="margin-top: 80px;"></div>
+<div class="w3-bar">
+<div class="w3-bar" style="margin-bottom: 2%;">
+</div>
+
+
+<div class="w3-container">
+  <div class="row">
+    <div class="col-md-4">
+        <div class="container p-3">
+            <div class="card">
+              <div class="card-header">
+              <h2>Donation</h2>
+              </div>
+              <div class="card-body">
+              <table class="m-auto">
+              <tr>
+              <th>Vag Availability</th>
+              <td><input type="number" class="form-control form-control-lg rounded-0" name="veg" [(ngModel)]="veg"></td>
+              </tr>
+              <tr>
+              <th>Non-Veg Availability</th>
+              <td><input type="number" class="form-control form-control-lg rounded-0" name="nonveg" [(ngModel)]="nonveg"></td>
+              </tr>
+              <tr>
+              <th>Total Availability</th>
+              <td><h5><label >{{ veg+nonveg }}</label></h5></td>
+              </tr>
+              <tr>
+              <th></th>
+              <td><button type="submit" class="btn btn-success btn-lg" (click)="updateRestaurantActivity()">Submit</button></td>
+              </tr>
+              </table>
+              </div>
+            </div>
+          </div>
+                 
+    </div> 
+    <div class="col-md-4">
+      <h5>
+        <label>{{restaurant.username}}</label><br/>
+        <label>{{restaurant.email}}</label><br/>
+      </h5>
+      <h5>Address:</h5>
+      <p>
+        {{restaurant.address}}
+      </p>
+    </div>
+    <div class="col-md-4">
+      <iframe src="https://maps.google.com/maps?hl=en&q=12.932924,77.583613&ie=UTF8&t=&z=15&iwloc=B&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>
+
+      </div>
+  </div>
+</div>
+
+
+<div class="w3-bar">
+  <div class="w3-bar-item w3-right">
+    <button style="margin-right: 20px;" data-toggle="modal" href="#statusModal" (click)="fetchStatus()" class="btn btn-primary btn-md">Status</button>
+  </div>
+</div>
+
+<div *ngIf="restaurantLogs!=undefined">
+<h5 class="w3-black w3-padding">Donation Logs:</h5>
+<!-- Food Requirement Log-->
+<div class="w3-container w3-padding" style="margin: 10px">
+    <!-- Single Requirement Log -->
+    <div class=" w3-card-4 row w3-padding" style="margin-top: 20px" *ngFor="let log of restaurantLogs.logs" >
+      <div class="col-md-6">
+        <label><b><u>Availability Details</u></b></label>
+        <table class="w3-table-all" >
+           <tr>
+             <th>Request Time</th>
+             <td>{{log.date}}</td>
+           </tr>
+           <tr>
+              <th>Total Availability</th>
+              <td>{{log.restaurantStatus.foodAvailability}}</td>
+           </tr>
+           <tr>
+              <th>Veg</th>
+              <td>{{log.restaurantStatus.foodAvailability/2}}</td>
+           </tr>
+           <tr>
+              <th>Non-Veg</th>
+              <td>{{log.restaurantStatus.foodAvailability/2}}</td>
+           </tr>
+        </table>
+      </div> 
+      <div class="col-md-6">
+          <label><b><u>Process Details</u></b></label>
+          <table class="w3-table-all" >
+             <tr>
+               <th>Pick Up Time</th>
+               <td>{{log.date}}</td>
+             </tr>
+             <tr>
+                <th>Assigned Delivery Agent</th>
+                <td>{{log.restaurantStatus.deliveryBoyName}}<br/>{{log.restaurantStatus.mobile}}</td>
+             </tr>
+             <tr>
+                <th>Status</th>
+                <td>
+                  <select class="form-control" >
+                    <option>Ready For Pick Up</option>
+                    <option>Picked By Delivery Boy</option>
+                  </select>
+                </td>
+             </tr>
+          </table>
+      </div>
+    </div>
+</div>
+
+
+<!--Modal Code-->
+<div class="modal fade" id="statusModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title">Status</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+        <td>Food Availability</td>
+        <td>{{foodStatus.logs.restaurantStatus.foodAvailability}}</td>
+        </tr>
+        <tr>
+        <td>Delivery Boy Name</td>
+        <td>{{foodStatus.logs.restaurantStatus.deliveryBoyName}}</td>
+        </tr>
+        <tr>
+        <td>Delivery Boy Mobile</td>
+        <td>{{foodStatus.logs.restaurantStatus.mobile}}</td>
+        </tr>
+        
+      </tbody>
+      </table>
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+
+

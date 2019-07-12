@@ -1,0 +1,22 @@
+<div *ngIf="role == 'restaurant'">
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <app-availabilityform></app-availabilityform>
+      </div>
+      <div class="col-md-6">
+        <app-restaurantprofile></app-restaurantprofile>
+      </div>
+    </div> -->
+    <!-- <app-restaurant-logs></app-restaurant-logs> -->
+  <!-- </div> -->
+  <app-restaurant-dashboard></app-restaurant-dashboard>
+</div>
+
+<div *ngIf="role == 'charity'">
+  <app-charity-dash-board></app-charity-dash-board>
+</div>
+
+<div *ngIf="role == 'deliveryBoy'">
+  <app-delivery-boy-dash-board></app-delivery-boy-dash-board>
+</div>
