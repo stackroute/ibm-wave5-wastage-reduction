@@ -1,13 +1,13 @@
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/config/CharityLogRabbitMQConfig.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/service/CharityService.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/domain/Logs.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/rabbitmq/model/CharityStatusList.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/service/RabbitService.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/rabbitmq/model/CharityStatus.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/CharityServerApplication.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/domain/CharityLiveStatus.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/controller/CharityController.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/repository/CharityLiveStatusRepository.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/domain/Charity.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/repository/CharityRepository.java
-/home/dipali/Documents/Project/Backend/New backend/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/service/CharityServiceImpl.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/config/CharityLogRabbitMQConfig.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/service/RabbitService.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/rabbitmq/model/CharityStatus.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/rabbitmq/model/CharityStatusList.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/domain/Charity.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/service/CharityService.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/controller/CharityController.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/CharityServerApplication.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/repository/CharityRepository.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/domain/CharityLiveStatus.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/domain/Logs.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/repository/CharityLiveStatusRepository.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/charity-logs-server/src/main/java/com/stackroute/service/CharityServiceImpl.java
