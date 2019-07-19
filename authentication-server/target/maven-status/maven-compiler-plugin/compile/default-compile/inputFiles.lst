@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /home/mukesh/Desktop/wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/JwtRequestFilter.java
 /home/mukesh/Desktop/wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/service/JwtUserDetailsService.java
 /home/mukesh/Desktop/wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/model/JwtRequest.java
@@ -18,3 +19,25 @@
 /home/mukesh/Desktop/wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/service/UserServiceImpl.java
 /home/mukesh/Desktop/wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/model/JwtResponse.java
 /home/mukesh/Desktop/wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/JwtAuthenticationEntryPoint.java
+=======
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/rabbitmq/model/CharityMQ.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/WebSecurityConfig.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/RabbitMqConfig.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/model/JwtResponse.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/repository/UserRepository.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/JwtRequestFilter.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/service/RestaurantRabbitService.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/model/JwtRequest.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/rabbitmq/model/Users.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/model/CheckResponse.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/model/User.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/service/UserServiceImpl.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/AuthenticationServerApplication.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/service/UserService.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/rabbitmq/model/DeliveryBoyMQ.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/JwtAuthenticationEntryPoint.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/controller/JwtAuthenticationController.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/service/JwtUserDetailsService.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/rabbitmq/model/RestaurantMQ.java
+/home/arathi/waste/dipali-push-back-end/ibm-wave5-wastage-reduction/authentication-server/src/main/java/com/stackroute/authenticationserver/config/JwtTokenUtil.java
+>>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b

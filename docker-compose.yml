@@ -132,6 +132,7 @@ services:
 #      - ../data/mysql:/var/lib/mysql
 
   mysql:
+<<<<<<< HEAD
       image: mysql:5.7
       ports:
         - 3306:3306
@@ -145,6 +146,24 @@ services:
       volumes:
         - ../data/mysql:/var/lib/mysql
 
+=======
+    image: mysql:5.7
+    restart: always
+    network_mode: "host"
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: "Destiny1!"
+    hostname: localhost
+    entrypoint:
+      sh -c "
+      echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;
+      /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      "
+    ports:
+      - 3306:3306
+#    volumes:
+#      - ../data/mysql:/var/lib/mysql
+>>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b
 
   mongo:
     image: mongo
@@ -153,8 +172,8 @@ services:
     network_mode: "host"
     ports:
       - 27017:27017
-    volumes:
-      - ../data/mongo:/data/db
+#    volumes:
+#      - ../data/mongo:/data/db
 
   rabbitmq:
     image: rabbitmq:3.7.5-management
@@ -163,8 +182,8 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
-    volumes:
-      - ../data/rabbitmq:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
+#    volumes:
+#      - ../data/rabbitmq:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
     environment:
       RABBITMQ_ERLANG_COOKIE: 6085e2412b6fa88647466c6a81c0cea0
       RABBITMQ_DEFAULT_USER: guest
@@ -176,6 +195,7 @@ services:
     ports:
       - 7474:7474
       - 7687:7687
+<<<<<<< HEAD
     expose:
       - 7474
     container_name: neo4j
@@ -186,3 +206,11 @@ services:
     environment:
       - NEO4J_AUTH=neo4j/root123
     restart: always
+=======
+    environment:
+      - NEO4J_AUTH=neo4j/root123
+#    volumes:
+#      - ../data/neo4j/data:/data
+#      - ../data/neo4j/logs:/logs
+
+>>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b

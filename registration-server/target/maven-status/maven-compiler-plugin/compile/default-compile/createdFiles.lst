@@ -6,13 +6,18 @@ com/stackroute/registrationserver/service/CharityService.class
 com/stackroute/registrationserver/service/RestaurantService.class
 com/stackroute/registrationserver/domain/Charities$CharitiesBuilder.class
 com/stackroute/rabbitmq/model/CharityMQ.class
+com/stackroute/registrationserver/seedData/RestaurantSeedData.class
 com/stackroute/registrationserver/repository/DeliveryBoyRepository.class
 com/stackroute/rabbitmq/model/RestaurantMQ.class
 com/stackroute/registrationserver/service/RestaurantServiceImpl.class
 com/stackroute/registrationserver/domain/DeliveryBoyProfile.class
 com/stackroute/registrationserver/repository/CharityRepository.class
 com/stackroute/registrationserver/config/RabbitMqConfig.class
+<<<<<<< HEAD
 com/stackroute/registrationserver/domain/DeliveryBoyProfile$DeliveryBoyProfileBuilder.class
+=======
+com/stackroute/registrationserver/seedData/DeliverySeedData.class
+>>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b
 com/stackroute/registrationserver/domain/Restaurants.class
 com/stackroute/registrationserver/repository/RestaurantRepository.class
 com/stackroute/rabbitmq/model/DeliveryBoyMQ$DeliveryBoyMQBuilder.class
@@ -22,10 +27,11 @@ com/stackroute/registrationserver/domain/DeliveryBoys$DeliveryBoysBuilder.class
 com/stackroute/registrationserver/service/RabbitService.class
 com/stackroute/registrationserver/service/DeliveryBoyService.class
 com/stackroute/registrationserver/domain/Charities.class
+com/stackroute/registrationserver/seedData/CharitySeedData.class
 com/stackroute/registrationserver/domain/CharityProfile$CharityProfileBuilder.class
 com/stackroute/rabbitmq/model/RestaurantMQ$RestaurantMQBuilder.class
-com/stackroute/registrationserver/service/DeliveryBoyServiceImpl.class
 com/stackroute/rabbitmq/model/CharityMQ$CharityMQBuilder.class
+com/stackroute/registrationserver/service/DeliveryBoyServiceImpl.class
 com/stackroute/registrationserver/service/CharityServiceImpl.class
-com/stackroute/registrationserver/domain/CharityProfile.class
 com/stackroute/rabbitmq/model/DeliveryBoyMQ.class
+com/stackroute/registrationserver/domain/CharityProfile.class
