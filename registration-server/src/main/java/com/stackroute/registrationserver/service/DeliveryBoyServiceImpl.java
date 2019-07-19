@@ -24,7 +24,7 @@ public class DeliveryBoyServiceImpl implements DeliveryBoyService {
 
         System.out.println(deliveryBoys);
 
-        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
+        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getDeliveryBoyName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
 
         DeliveryBoyProfile savedDeliveryBoyDetails = deliveryBoyRepository.save(deliveryBoyProfile);
         if (savedDeliveryBoyDetails == null)
@@ -39,7 +39,7 @@ public class DeliveryBoyServiceImpl implements DeliveryBoyService {
 
     @Override
     public DeliveryBoyProfile updateDeliveryBoy(DeliveryBoys deliveryBoys) throws Exception {
-        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
+        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getDeliveryBoyName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
         return deliveryBoyRepository.save(deliveryBoyProfile);
     }
 

@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Charity;
+import com.stackroute.domain.Rating;
 import com.stackroute.service.CharityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,11 +23,10 @@ public class CharityController {
     ResponseEntity responseEntity;
 
     @PostMapping("charity-logs")
-    public ResponseEntity<?> saveCharityLogs (@RequestBody Charity charity) throws Exception
+    public ResponseEntity<?> saveCharityLogs (@RequestBody String username) throws Exception
     {
 
-        charityService.saveCharityLogs(charity);
-        responseEntity=new ResponseEntity(charity, HttpStatus.CREATED);
+        responseEntity=new ResponseEntity(charityService.saveCharityLogs(username), HttpStatus.CREATED);
         return  responseEntity;
     }
 
@@ -42,5 +42,12 @@ public class CharityController {
         return  new ResponseEntity(charityService.fetchCharityStatus(username),HttpStatus.OK);
     }
 
+    @PostMapping("charity-rating")
+    public ResponseEntity<?> saveRating (@RequestBody Rating rating) throws Exception
+    {
+
+        responseEntity=new ResponseEntity(charityService.saveRating(rating), HttpStatus.CREATED);
+        return  responseEntity;
+    }
 
 }

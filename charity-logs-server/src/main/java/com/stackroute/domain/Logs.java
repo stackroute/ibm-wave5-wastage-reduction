@@ -7,25 +7,26 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Logs {
 
     @Id
-    private String id;
+    private int id;
 
     private String date;
 
-    private int rating;
+    private double rating;
 
     private CharityStatus charityStatus;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -37,11 +38,11 @@ public class Logs {
         this.date = date;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

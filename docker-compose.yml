@@ -1,6 +1,15 @@
 version: '2'
 
 services:
+#  wastage-ui:
+#    image: wastage-ui:1.0
+#    build: wastage-ui/
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 4200:4200
+
   eureka-server:
     image: eureka-server:1.0
     build: eureka-server/
@@ -107,23 +116,35 @@ services:
     ports:
       - 8050:8050
 
+#  mysql:
+#    image: mysql:5.7
+#    restart: always
+#    network_mode: host
+#    environment:
+#      - MYSQL_USER=root
+#      - MYSQL_ROOT_PASSWORD=Destiny1!
+#    hostname: localhost
+#    entrypoint:
+#      sh -c "echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;/usr/#local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+#    ports:
+#      - 3306:3306
+#    volumes:
+#      - ../data/mysql:/var/lib/mysql
+
   mysql:
-    image: mysql:5.7
-    restart: always
-    network_mode: "host"
-    environment:
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: "Destiny1!"
-    hostname: localhost
-    entrypoint:
-      sh -c "
-      echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;
-      /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-      "
-    ports:
-      - 3306:3306
-    volumes:
-      - ../data/mysql:/var/lib/mysql
+      image: mysql:5.7
+      ports:
+        - 3306:3306
+      environment:
+        - MYSQL_ROOT_PASSWORD=Destiny1!
+      container_name: mysql
+      network_mode: host
+      hostname: localhost
+      entrypoint:
+        sh -c "echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;/usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+      volumes:
+        - ../data/mysql:/var/lib/mysql
+
 
   mongo:
     image: mongo
@@ -151,14 +172,17 @@ services:
       RABBITMQ_DEFAULT_VHOST: /
 
   neo4j:
-    image: neo4j:3.5
-    restart: always
-    hostname: localhost
-    network_mode: "host"
+    image: neo4j:3.0
     ports:
       - 7474:7474
       - 7687:7687
+    expose:
+      - 7474
+    container_name: neo4j
+    network_mode: host
+    hostname: localhost
     volumes:
       - ../data/neo4j/data:/data
-      - ../data/neo4j/logs:/logs
-
+    environment:
+      - NEO4J_AUTH=neo4j/root123
+    restart: always

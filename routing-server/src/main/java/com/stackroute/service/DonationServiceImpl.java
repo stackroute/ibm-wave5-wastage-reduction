@@ -209,8 +209,10 @@ public class DonationServiceImpl implements DonationService
                     deliveryBoyRepository.createPicksFromRelation(restaurant.getRestaurantId(), deliveryBoy.getDeliveryBoyId());
                 }
             System.out.println(" Delivery Boy " + deliveryBoy.getDeliveryBoyName() + " Assigned to Restaurants " + s + "\n");
-                deliveryBoyRepository.createDeliversToRelation(deliveryBoy.getDeliveryBoyId(),charity.getCharityId());
-            System.out.println(" Delivery Boy : " + deliveryBoy.getDeliveryBoyName() + " Assigned to Charity " + charity.getCharityName());
+            if(restaurantList.size()>0) {
+                deliveryBoyRepository.createDeliversToRelation(deliveryBoy.getDeliveryBoyId(), charity.getCharityId());
+                System.out.println(" Delivery Boy : " + deliveryBoy.getDeliveryBoyName() + " Assigned to Charity " + charity.getCharityName());
+            }
             deliveryBoyRepository.updateDeliveryBoyStatusAndLocation(deliveryBoy.getDeliveryBoyId(),"NotAvailable",deliveryBoy.getLocation());
             System.out.println(" Updated Status to NotAvailable\n");
             }

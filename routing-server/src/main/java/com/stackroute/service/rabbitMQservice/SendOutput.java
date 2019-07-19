@@ -60,7 +60,6 @@ public class SendOutput {
             RestaurantStatus restaurantStatus = new RestaurantStatus(restaurant.getRestaurantId(),restaurant.getFoodAvailability(),"Not Alocated",Integer.toUnsignedLong(0));
             try {
                 deliveryBoy = deliveryBoyRepository.fetchDeliveryBoysForRestaurant(restaurant.getRestaurantId());
-                System.out.println(deliveryBoy.getDeliveryBoyId() + deliveryBoy.getDeliveryBoyName() + deliveryBoy.getMobile());
                 restaurantStatus = new RestaurantStatus(restaurant.getRestaurantId(), restaurant.getFoodAvailability(), deliveryBoy.getDeliveryBoyName(), deliveryBoy.getMobile());
             }
             catch (Exception e){
@@ -81,10 +80,23 @@ public class SendOutput {
         List<Charity> charityList = charityRepository.fetchCharities();
         for( int i =0; i < charityList.size(); i++){
             Charity charity = charityList.get(i);
-            System.out.println(charity.getPrecedence());
-            DeliveryBoy deliveryBoy = deliveryBoyRepository.fetchDeliveryBoysForCharity(charity.getCharityId());
-            CharityStatus charityStatus = new CharityStatus(charity.getCharityId(),charity.getFoodAvailable(),deliveryBoy.getDeliveryBoyName(),deliveryBoy.getMobile());
-            charityStatus.setFoodAvailable(charity.getFoodAvailable());
+            System.out.println(charity.getPrecedence()+ " " + charity.getFoodAvailable());
+            DeliveryBoy deliveryBoy = new DeliveryBoy();
+            List<Restaurant> restaurantList = restaurantRepository.getAllocatedRestaurants(charity.getCharityId());
+            List<String> restaurantIds = new ArrayList<>();
+            for ( int j = 0; j < restaurantList.size(); j++){
+                Restaurant restaurant = restaurantList.get(j);
+                restaurantIds.add(restaurant.getRestaurantId());
+            }
+            System.out.println(restaurantIds);
+            CharityStatus charityStatus = new CharityStatus(charity.getCharityId(),charity.getFoodAvailable(),"Not Allocated",Integer.toUnsignedLong(0),restaurantIds);
+            try{
+                deliveryBoy = deliveryBoyRepository.fetchDeliveryBoysForCharity(charity.getCharityId());
+                charityStatus = new CharityStatus(charity.getCharityId(), charity.getFoodAvailable(), deliveryBoy.getDeliveryBoyName(), deliveryBoy.getMobile(), restaurantIds);
+            }
+            catch (Exception e){
+                System.out.println(e.getMessage());
+            }
             charityStatusList.add(charityStatus);
         }
         System.out.println("Sent Logs : " + charityStatusList);

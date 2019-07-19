@@ -15,7 +15,7 @@ public class Restaurants {
     private String password;
     private String email;
     private String role;
-    private String name;
+    private String restaurantName;
     private long mobile;
     private String address;
     private String location;

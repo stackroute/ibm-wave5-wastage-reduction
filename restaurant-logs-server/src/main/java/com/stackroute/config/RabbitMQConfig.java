@@ -23,6 +23,15 @@ public class RabbitMQConfig {
     @Value("${restaurantLogs.rabbitmq.routingkey}")
     private String restaurantRoutingkey;
 
+    @Value("${rating.rabbitmq.queue}")
+    String ratingQueue;
+
+    @Value("${rating.rabbitmq.exchange}")
+    String ratingExchange;
+
+    @Value("${rating.rabbitmq.routingkey}")
+    private String ratingRoutingkey;
+
     @Bean
     Queue resQueue() {
         System.out.println("inside restaurant queue");
@@ -40,6 +49,27 @@ public class RabbitMQConfig {
         System.out.println("inside binding");
         return BindingBuilder.bind(resQueue()).to(resExchange()).with(restaurantRoutingkey);
     }
+
+
+    @Bean
+    Queue rtnQueue() {
+        System.out.println("inside rating queue");
+        return new Queue(ratingQueue, true);
+    }
+
+    @Bean
+    DirectExchange rtnExchange() {
+        System.out.println("inside raitng exchange");
+        return new DirectExchange(ratingExchange);
+    }
+
+    @Bean
+    Binding rtnBinding() {
+        System.out.println("inside rating binding");
+        return BindingBuilder.bind(rtnQueue()).to(rtnExchange()).with(ratingRoutingkey);
+    }
+
+
     @Bean
     public MessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();

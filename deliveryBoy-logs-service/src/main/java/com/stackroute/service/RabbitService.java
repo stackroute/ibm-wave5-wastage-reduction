@@ -68,10 +68,12 @@ public class RabbitService {
             for (int j = 0; j < 1; j++){
 //                  Charity receivedCharity = receivedCharityList.get(j);
                 CharitySave charitySave = new CharitySave();
-                charitySave.setUsername(receivedCharity.getCharityId());
-                charitySave.setCharityName(receivedCharity.getCharityName());
-                charitySave.setFoodReceived(receivedCharity.getFoodAvailable());
-                charitySave.setLocation(receivedCharity.getLocation());
+                if(receivedCharity!=null) {
+                    charitySave.setUsername(receivedCharity.getCharityId());
+                    charitySave.setCharityName(receivedCharity.getCharityName());
+                    charitySave.setFoodReceived(receivedCharity.getFoodAvailable());
+                    charitySave.setLocation(receivedCharity.getLocation());
+                }
                 charities.add(charitySave);
             }
             System.out.println("check -- " + restaurants);

@@ -21,7 +21,7 @@ public class CharityProfile {
         private String username;
         private String email;
         private String role;
-        private String name;
+        private String charityName;
         private long mobile;
         private String address;
         private String location;

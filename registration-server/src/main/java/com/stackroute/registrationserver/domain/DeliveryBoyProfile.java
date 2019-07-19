@@ -20,7 +20,7 @@ public class DeliveryBoyProfile {
     private String username;
     private String email;
     private String role;
-    private String name;
+    private String deliveryBoyName;
     private Long mobile;
     private String address;
     private String licenseNo;

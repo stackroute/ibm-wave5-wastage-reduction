@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class CharityStatus {
@@ -15,12 +17,14 @@ public class CharityStatus {
     private String foodAvailable;
     private String deliveryBoyName;
     private Long mobile;
+    private List<String> restaurantIds;
 
-    public CharityStatus(String username, String foodAvailable, String deliveryBoyName, Long mobile) {
+    public CharityStatus(String username, String foodAvailable, String deliveryBoyName, Long mobile, List<String> restaurantIds) {
         this.username = username;
         this.foodAvailable = foodAvailable;
         this.deliveryBoyName = deliveryBoyName;
         this.mobile = mobile;
+        this.restaurantIds = restaurantIds;
     }
 
     public String getUsername() {
@@ -53,5 +57,13 @@ public class CharityStatus {
 
     public void setMobile(Long mobile) {
         this.mobile = mobile;
+    }
+
+    public List<String> getRestaurantIds() {
+        return restaurantIds;
+    }
+
+    public void setRestaurantIds(List<String> restaurantIds) {
+        this.restaurantIds = restaurantIds;
     }
 }

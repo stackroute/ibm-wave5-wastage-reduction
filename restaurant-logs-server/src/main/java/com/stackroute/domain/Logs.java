@@ -34,13 +34,13 @@ public class Logs {
     @Id
     int id;
     String date;
-    String rating;
+    double rating;
     RestaurantStatus restaurantStatus;
 
     public Logs() {
     }
 
-    public Logs(int id, String date, String rating, RestaurantStatus restaurantStatus) {
+    public Logs(int id, String date, double rating, RestaurantStatus restaurantStatus) {
         this.id = id;
         this.date = date;
         this.rating = rating;
@@ -63,11 +63,11 @@ public class Logs {
         this.date = date;
     }
 
-    public String getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

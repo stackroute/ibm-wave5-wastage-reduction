@@ -17,13 +17,14 @@ public class RestaurantController {
     public RestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
     }
-    @PostMapping("restaurant")
-    public ResponseEntity<?> saveRestaurantLog(@RequestBody Restaurant restaurant) throws Exception
+
+    @PostMapping("restaurant-logs")
+    public ResponseEntity<?> saveRestaurantLog(@RequestBody String username) throws Exception
     {
         ResponseEntity responseEntity;
-        restaurantService.saveRestaurantLog(restaurant);
-        responseEntity=new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
-        System.out.println("Restaurant : "+ restaurant);
+        restaurantService.saveRestaurantLog(username);
+        responseEntity=new ResponseEntity<String>("Addition to logs is successful", HttpStatus.CREATED);
+        System.out.println("Addition to logs is successful for  : "+ username);
         return  responseEntity;
     }
 

@@ -23,6 +23,15 @@ public class CharityLogRabbitMQConfig {
     @Value("${charityLogs.rabbitmq.routingkey}")
     private String charityRoutingkey;
 
+    @Value("${rating.rabbitmq.queue}")
+    String ratingQueue;
+
+    @Value("${rating.rabbitmq.exchange}")
+    String ratingExchange;
+
+    @Value("${rating.rabbitmq.routingkey}")
+    private String ratingRoutingkey;
+
     @Bean
     Queue chrQueue() {
         System.out.println("inside charity queue");
@@ -39,6 +48,24 @@ public class CharityLogRabbitMQConfig {
     Binding chrBinding() {
         System.out.println("inside charity binding");
         return BindingBuilder.bind(chrQueue()).to(chrExchange()).with(charityRoutingkey);
+    }
+
+    @Bean
+    Queue rtnQueue() {
+        System.out.println("inside rating queue");
+        return new Queue(ratingQueue, true);
+    }
+
+    @Bean
+    DirectExchange rtnExchange() {
+        System.out.println("inside raitng exchange");
+        return new DirectExchange(ratingExchange);
+    }
+
+    @Bean
+    Binding rtnBinding() {
+        System.out.println("inside rating binding");
+        return BindingBuilder.bind(rtnQueue()).to(rtnExchange()).with(ratingRoutingkey);
     }
 
     @Bean

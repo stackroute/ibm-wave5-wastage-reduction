@@ -10,12 +10,13 @@ import java.util.List;
 
 @Service
 public interface RestaurantService {
-    Restaurant saveRestaurantLog(Restaurant restaurant) throws Exception;
+    Restaurant saveRestaurantLog(String username);
 
     List<Restaurant> getAllRestaurantLog() throws Exception;
 
     Restaurant fetchRestaurantLogs(String username);
 
     RestaurantLiveStatus fetchRestaurantLiveStatus(String username);
+
 
 }
