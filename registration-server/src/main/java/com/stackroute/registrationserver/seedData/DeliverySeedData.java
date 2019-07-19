@@ -47,6 +47,7 @@ public class DeliverySeedData implements ApplicationListener<ContextRefreshedEve
                 deliveryBoys.setUsername(workbook.getSheetAt(2).getRow(i).getCell(j+1 ).toString());
                 deliveryBoys.setPassword(workbook.getSheetAt(2).getRow(i).getCell(j+2 ).toString());
                 deliveryBoys.setEmail(workbook.getSheetAt(2).getRow(i).getCell(j+3 ).toString());
+                deliveryBoys.setMobile((long)(Double.parseDouble(workbook.getSheetAt(2).getRow(i).getCell(j + 4).toString())));
                 deliveryBoys.setLicenseName(workbook.getSheetAt(2).getRow(i).getCell(j+5 ).toString());
                 deliveryBoys.setLicenseNo(workbook.getSheetAt(2).getRow(i).getCell(j+6 ).toString());
                 deliveryBoys.setRole(workbook.getSheetAt(2).getRow(i).getCell(j+7 ).toString());

@@ -4,15 +4,9 @@ com/stackroute/rabbitmq/model/DeliveryBoyList.class
 com/stackroute/domain/DeliveryBoy.class
 com/stackroute/rabbitmq/model/DeliveryBoyStatus.class
 com/stackroute/rabbitmq/model/Charity.class
-<<<<<<< HEAD
-com/stackroute/config/RabbitMQConfig.class
-com/stackroute/service/DeliveryBoyServiceImpl.class
-com/stackroute/domain/Logs.class
-=======
 com/stackroute/domain/Logs.class
 com/stackroute/service/DeliveryBoyServiceImpl.class
 com/stackroute/config/RabbitMQConfig.class
->>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b
 com/stackroute/repository/DeliveryBoyLiveStatusRepository.class
 com/stackroute/domain/Charity.class
 com/stackroute/rabbitmq/model/Restaurant.class

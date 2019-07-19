@@ -42,11 +42,11 @@ public class RestaurantSeedData implements ApplicationListener<ContextRefreshedE
                 restaurants.setUsername(workbook.getSheetAt(1).getRow(i).getCell(j + 1).toString());
                 restaurants.setPassword(workbook.getSheetAt(1).getRow(i).getCell(j + 2).toString());
                 restaurants.setEmail(workbook.getSheetAt(1).getRow(i).getCell(j + 3).toString());
+                restaurants.setMobile((long)(Double.parseDouble(workbook.getSheetAt(1).getRow(i).getCell(j + 4).toString())));
                 restaurants.setCertificateNo(workbook.getSheetAt(1).getRow(i).getCell(j + 5).toString());
                 restaurants.setCertificateName(workbook.getSheetAt(1).getRow(i).getCell(j + 6).toString());
                 restaurants.setLocation(workbook.getSheetAt(1).getRow(i).getCell(j + 7).toString());
                 restaurants.setAddress(workbook.getSheetAt(1).getRow(i).getCell(j + 8).toString());
-
                 restaurants.setRole(workbook.getSheetAt(1).getRow(i).getCell(j + 9).toString());
                 System.out.println(restaurants);
 

@@ -7,8 +7,8 @@ com/stackroute/domain/Rating.class
 com/stackroute/repository/CharityLiveStatusRepository.class
 com/stackroute/rabbitmq/model/RatedRestaurant.class
 com/stackroute/controller/CharityController.class
-com/stackroute/service/CharityService.class
 com/stackroute/domain/Logs.class
+com/stackroute/service/CharityService.class
 com/stackroute/service/CharityServiceImpl.class
 com/stackroute/repository/CharityRepository.class
 com/stackroute/config/CharityLogRabbitMQConfig.class

@@ -47,7 +47,7 @@ public class RabbitService {
 
     public void sendToRestaurantRabbitMq(Restaurants restaurants) {
 
-        RestaurantMQ restaurant = new RestaurantMQ(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRole(),restaurants.getRestaurantName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
+        RestaurantMQ restaurant = new RestaurantMQ(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRole(),restaurants.getName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
 
         rabbitTemplate.convertAndSend(restaurantExchange, restaurantRoutingkey,restaurant);
 
@@ -57,7 +57,7 @@ public class RabbitService {
 
     public void sendToCharityRabbitMq(Charities charities) {
 
-        CharityMQ charity = new CharityMQ(charities.getUsername(),charities.getPassword(),charities.getEmail(), charities.getRole(),charities.getCharityName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
+        CharityMQ charity = new CharityMQ(charities.getUsername(),charities.getPassword(),charities.getEmail(), charities.getRole(),charities.getName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
 
         rabbitTemplate.convertAndSend(charityExchange, charityRoutingkey,charity);
 
@@ -67,7 +67,7 @@ public class RabbitService {
 
     public void sendToDeliveryBoyMQ(DeliveryBoys deliveryBoys) {
 
-        DeliveryBoyMQ deliveryBoyMQ = new DeliveryBoyMQ(deliveryBoys.getUsername(), deliveryBoys.getPassword(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getDeliveryBoyName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
+        DeliveryBoyMQ deliveryBoyMQ = new DeliveryBoyMQ(deliveryBoys.getUsername(), deliveryBoys.getPassword(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
         rabbitTemplate.convertAndSend(deliveryBoyExchange, deliveryBoyRoutingkey, deliveryBoyMQ);
 
         System.out.println("Sent CharityMQ = " + deliveryBoyMQ);
@@ -76,7 +76,7 @@ public class RabbitService {
 
     public void sendToRestaurantUpdateRabbitMq(Restaurants restaurants) {
 
-        RestaurantMQ restaurant = new RestaurantMQ(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRole(),restaurants.getRestaurantName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
+        RestaurantMQ restaurant = new RestaurantMQ(restaurants.getUsername(),restaurants.getPassword(),restaurants.getEmail(),restaurants.getRole(),restaurants.getName(),restaurants.getMobile(),restaurants.getAddress(),restaurants.getLocation(),restaurants.getCertificateNo(),restaurants.getCertificateName());
 
         rabbitTemplate.convertAndSend(restaurantExchange, restaurantUpdateRoutingkey,restaurant);
 
@@ -86,7 +86,7 @@ public class RabbitService {
 
     public void sendToCharityUpdateRabbitMq(Charities charities) {
 
-        CharityMQ charity = new CharityMQ(charities.getUsername(),charities.getPassword(),charities.getEmail(), charities.getRole(),charities.getCharityName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
+        CharityMQ charity = new CharityMQ(charities.getUsername(),charities.getPassword(),charities.getEmail(), charities.getRole(),charities.getName(),charities.getMobile(),charities.getAddress(),charities.getLocation(),charities.getFoodRequirement(),charities.getCertificateNo(),charities.getCertificateName());
 
         rabbitTemplate.convertAndSend(charityExchange, charityUpdateRoutingkey,charity);
 
@@ -96,7 +96,7 @@ public class RabbitService {
 
     public void sendToDeliveryBoyUpdateMQ(DeliveryBoys deliveryBoys) {
 
-        DeliveryBoyMQ deliveryBoyMQ = new DeliveryBoyMQ(deliveryBoys.getUsername(), deliveryBoys.getPassword(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getDeliveryBoyName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
+        DeliveryBoyMQ deliveryBoyMQ = new DeliveryBoyMQ(deliveryBoys.getUsername(), deliveryBoys.getPassword(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
         rabbitTemplate.convertAndSend(deliveryBoyExchange, deliveryBoyUpdateRoutingkey, deliveryBoyMQ);
 
         System.out.println("Sent CharityMQ = " + deliveryBoyMQ);

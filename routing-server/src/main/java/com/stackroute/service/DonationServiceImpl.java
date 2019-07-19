@@ -170,7 +170,7 @@ public class DonationServiceImpl implements DonationService
             for (int j = 0; j < restaurantList.size(); j++){
                 Restaurant restaurant = restaurantList.get(j);
                 System.out.println("Restaurant { " + restaurant.getRestaurantId() + " " + restaurant.getRestaurantName() + " }");
-                if ((foodAvailable+Integer.parseInt(restaurant.getFoodAvailability())<=foodRequirement)){
+                if ((foodAvailable+Integer.parseInt(restaurant.getFoodAvailability())<=foodRequirement)&&(Integer.parseInt(restaurant.getFoodAvailability())!=0)){
                     restaurantRepository.updateDonatedStatus(restaurant.getRestaurantId(),charity.getCharityId());
                     charityRepository.updateDonatedStatusOnRelation(restaurant.getRestaurantId(),charity.getCharityId());
                     foodAvailable+=Integer.parseInt(restaurant.getFoodAvailability());

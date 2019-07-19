@@ -21,7 +21,7 @@ public class RestaurantProfile {
     private String username;
     private String email;
     private String role;
-    private String restaurantName;
+    private String name;
     private long mobile;
     private String address;
     private String location;

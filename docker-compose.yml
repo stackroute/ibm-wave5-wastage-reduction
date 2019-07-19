@@ -14,7 +14,7 @@ services:
     image: eureka-server:1.0
     build: eureka-server/
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8761:8761
@@ -23,7 +23,7 @@ services:
     image: config-service:1.0
     build: config-server/
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8888:8888
@@ -38,7 +38,7 @@ services:
       - restaurant-logs-service
       - charity-logs-service
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8000:8000
@@ -51,7 +51,7 @@ services:
       - mysql
       - rabbitmq
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8060:8060
@@ -63,7 +63,7 @@ services:
       - mongo
       - rabbitmq
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8090:8090
@@ -75,7 +75,7 @@ services:
       - mongo
       - rabbitmq
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8070:8070
@@ -87,7 +87,7 @@ services:
       - mongo
       - rabbitmq
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8040:8040
@@ -99,7 +99,7 @@ services:
       - mysql
       - rabbitmq
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8080:8080
@@ -111,7 +111,7 @@ services:
       - neo4j
       - rabbitmq
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     ports:
       - 8050:8050
@@ -132,44 +132,26 @@ services:
 #      - ../data/mysql:/var/lib/mysql
 
   mysql:
-<<<<<<< HEAD
-      image: mysql:5.7
-      ports:
-        - 3306:3306
-      environment:
-        - MYSQL_ROOT_PASSWORD=Destiny1!
-      container_name: mysql
-      network_mode: host
-      hostname: localhost
-      entrypoint:
-        sh -c "echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;/usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
-      volumes:
-        - ../data/mysql:/var/lib/mysql
-
-=======
     image: mysql:5.7
     restart: always
-    network_mode: "host"
-    environment:
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: "Destiny1!"
-    hostname: localhost
-    entrypoint:
-      sh -c "
-      echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;
-      /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-      "
     ports:
       - 3306:3306
-#    volumes:
-#      - ../data/mysql:/var/lib/mysql
->>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b
+    environment:
+      - MYSQL_ROOT_PASSWORD=Destiny1!
+    container_name: mysql
+    network_mode: host
+    hostname: localhost
+    entrypoint:
+      sh -c "echo 'CREATE DATABASE IF NOT EXISTS authorizationService; CREATE DATABASE IF NOT EXISTS registrationService;' > /docker-entrypoint-initdb.d/init.sql;/usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+#   volumes:
+#     - ../data/mysql:/var/lib/mysql
+
 
   mongo:
     image: mongo
     restart: always
     hostname: localhost
-    network_mode: "host"
+    network_mode: host
     ports:
       - 27017:27017
 #    volumes:
@@ -178,7 +160,7 @@ services:
   rabbitmq:
     image: rabbitmq:3.7.5-management
     hostname: localhost
-    network_mode: "host"
+    network_mode: host
     ports:
       - 5672:5672
       - 15672:15672
@@ -192,25 +174,15 @@ services:
 
   neo4j:
     image: neo4j:3.0
+    restart: always
+    hostname: localhost
+    network_mode: host
     ports:
       - 7474:7474
       - 7687:7687
-<<<<<<< HEAD
-    expose:
-      - 7474
-    container_name: neo4j
-    network_mode: host
-    hostname: localhost
-    volumes:
-      - ../data/neo4j/data:/data
-    environment:
-      - NEO4J_AUTH=neo4j/root123
-    restart: always
-=======
     environment:
       - NEO4J_AUTH=neo4j/root123
 #    volumes:
 #      - ../data/neo4j/data:/data
 #      - ../data/neo4j/logs:/logs
 
->>>>>>> c48e6436a0614fff70cb2faae53dae84b6a9b87b

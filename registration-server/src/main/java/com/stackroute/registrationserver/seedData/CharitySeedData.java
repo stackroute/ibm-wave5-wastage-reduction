@@ -30,6 +30,7 @@ public class CharitySeedData implements ApplicationListener<ContextRefreshedEven
         try {
 
             FileInputStream file = new FileInputStream(new File("./charityseed.xlsx"));
+
             XSSFWorkbook workbook = new XSSFWorkbook(file);
 
             XSSFSheet sheet = workbook.getSheetAt(0);
@@ -47,8 +48,10 @@ public class CharitySeedData implements ApplicationListener<ContextRefreshedEven
                 charities.setPassword(workbook.getSheetAt(0).getRow(i).getCell(j + 2).toString());
                 charities.setAddress(workbook.getSheetAt(0).getRow(i).getCell(j + 3).toString());
                 charities.setEmail(workbook.getSheetAt(0).getRow(i).getCell(j + 4).toString());
+                charities.setMobile((long)(Double.parseDouble(workbook.getSheetAt(0).getRow(i).getCell(j + 5).toString())));
                 charities.setCertificateNo(workbook.getSheetAt(0).getRow(i).getCell(j + 6).toString());
                 charities.setCertificateName(workbook.getSheetAt(0).getRow(i).getCell(j + 7).toString());
+                charities.setFoodRequirement((long)(Double.parseDouble(workbook.getSheetAt(0).getRow(i).getCell(j + 8).toString())));
                 charities.setLocation(workbook.getSheetAt(0).getRow(i).getCell(j + 9).toString());
                 charities.setRole(workbook.getSheetAt(0).getRow(i).getCell(j + 10).toString());
                 System.out.println(charities);

@@ -22,7 +22,7 @@ public class CharityServiceImpl implements CharityService {
 
     @Override
     public CharityProfile saveCharity(Charities charity) throws Exception {
-        CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getEmail(),charity.getRole(),charity.getCharityName(),charity.getMobile(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getCertificateName());
+        CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getEmail(),charity.getRole(),charity.getName(),charity.getMobile(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getCertificateName());
         CharityProfile savedCharity = charityRepository.save(charityProfile);
         return savedCharity;
     }
@@ -35,7 +35,7 @@ public class CharityServiceImpl implements CharityService {
 
     @Override
     public CharityProfile updateCharity(Charities charity) throws Exception {
-        CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getEmail(),charity.getRole(),charity.getCharityName(),charity.getMobile(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getCertificateName());
+        CharityProfile charityProfile = new CharityProfile(charity.getUsername(),charity.getEmail(),charity.getRole(),charity.getName(),charity.getMobile(),charity.getAddress(),charity.getLocation(),charity.getFoodRequirement(),charity.getCertificateNo(),charity.getCertificateName());
         return charityRepository.save(charityProfile);
     }
 
