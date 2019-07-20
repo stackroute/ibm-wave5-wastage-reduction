@@ -9,6 +9,9 @@ public class RestaurantActivity {
     private String restaurantId;
     private String foodAvailability;
 
+    public RestaurantActivity() {
+    }
+
     public RestaurantActivity(String restaurantId, String foodAvailability) {
         this.restaurantId = restaurantId;
         this.foodAvailability = foodAvailability;

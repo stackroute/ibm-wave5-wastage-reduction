@@ -8,6 +8,7 @@ import com.stackroute.rabbitmq.model.RestaurantMQ;
 import com.stackroute.repository.CharityRepository;
 import com.stackroute.repository.DeliveryBoyRepository;
 import com.stackroute.repository.RestaurantRepository;
+import com.stackroute.seedData.FoodAvailabilityData;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,14 @@ public class RestaurantListener {
     @Autowired
     private DeliveryBoyRepository deliveryBoyRepository;
 
-    @RabbitHandler @Transactional
+    @RabbitHandler
+    @Transactional
     public void recievedAndSaved(RestaurantMQ restaurantMQ) {
 //        charityRepository.saveCharity("1","HappyHome","60","12.934127,77.611946","0",1.0);
-        Restaurant restaurant = new Restaurant(restaurantMQ.getUsername(),restaurantMQ.getRestaurantName(),"0",restaurantMQ.getLocation(),"no");
-        System.out.println(restaurantRepository.saveRestaurant(restaurant.getRestaurantId(),restaurant.getRestaurantName(),restaurant.getLocation(),restaurant.getFoodAvailability(),restaurant.getDonated()));
+        FoodAvailabilityData foodAvailabilityData = new FoodAvailabilityData();
+        String foodAvailibility = foodAvailabilityData.onDataReceived(restaurantMQ.getUsername());
+        Restaurant restaurant = new Restaurant(restaurantMQ.getUsername(), restaurantMQ.getRestaurantName(), foodAvailibility, restaurantMQ.getLocation(), "no");
+        System.out.println(restaurantRepository.saveRestaurant(restaurant.getRestaurantId(), restaurant.getRestaurantName(), restaurant.getLocation(), restaurant.getFoodAvailability(), restaurant.getDonated()));
         String[] restaurantLocation = restaurant.getLocation().split(",");
         double restaurantLat = Double.parseDouble(restaurantLocation[0]);
         double restaurantLon = Double.parseDouble(restaurantLocation[1]);
@@ -43,17 +47,17 @@ public class RestaurantListener {
             String[] charityLocation = charity.getLocation().split(",");
             double charityLat = Double.parseDouble(charityLocation[0]);
             double charityLon = Double.parseDouble(charityLocation[1]);
-            double distance = getDistanceFromLatLonInKm(restaurantLat,restaurantLon,charityLat,charityLon);
-            charityRepository.createRestaurantCharityRelation(restaurant.getRestaurantId(),charity.getCharityId(),distance,"no");
+            double distance = getDistanceFromLatLonInKm(restaurantLat, restaurantLon, charityLat, charityLon);
+            charityRepository.createRestaurantCharityRelation(restaurant.getRestaurantId(), charity.getCharityId(), distance, "no");
         }
         List<DeliveryBoy> deliveryBoyList = deliveryBoyRepository.fetchDeliveryBoys();
-        for (int j = 0; j < deliveryBoyList.size(); j++){
+        for (int j = 0; j < deliveryBoyList.size(); j++) {
             DeliveryBoy deliveryBoy = deliveryBoyList.get(j);
             String[] deliveryBoyLocation = deliveryBoy.getLocation().split(",");
             double deliveryBoyLat = Double.parseDouble(deliveryBoyLocation[0]);
             double deliveryBoyLon = Double.parseDouble(deliveryBoyLocation[1]);
-            double distance = getDistanceFromLatLonInKm(restaurantLat,restaurantLon,deliveryBoyLat,deliveryBoyLon);
-            deliveryBoyRepository.createRestaurantDeliveryBoyRelation(restaurant.getRestaurantId(),deliveryBoy.getDeliveryBoyId(),distance);
+            double distance = getDistanceFromLatLonInKm(restaurantLat, restaurantLon, deliveryBoyLat, deliveryBoyLon);
+            deliveryBoyRepository.createRestaurantDeliveryBoyRelation(restaurant.getRestaurantId(), deliveryBoy.getDeliveryBoyId(), distance);
 
         }
     }

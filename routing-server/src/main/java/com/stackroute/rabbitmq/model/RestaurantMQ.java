@@ -21,4 +21,5 @@ public class RestaurantMQ {
     private String location;
     private String certificateNo;
     private String certificateName;
+
 }
