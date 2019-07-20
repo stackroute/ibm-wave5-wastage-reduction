@@ -56,8 +56,8 @@ public class CharitySeedData implements ApplicationListener<ContextRefreshedEven
                 charities.setRole(workbook.getSheetAt(0).getRow(i).getCell(j + 10).toString());
                 System.out.println(charities);
 
-                registrationController.updateCharity(charities);
-                rabbitService.sendToCharityRabbitMq(charities);
+                registrationController.saveCharity(charities);
+                rabbitService.sendToCharityUpdateRabbitMq(charities);
 
             }
 

@@ -1,6 +1,7 @@
 package com.stackroute.authenticationserver.controller;
 
 import com.stackroute.authenticationserver.config.JwtTokenUtil;
+import com.stackroute.authenticationserver.exception.UserNotExistsException;
 import com.stackroute.authenticationserver.model.CheckResponse;
 import com.stackroute.authenticationserver.model.JwtRequest;
 import com.stackroute.authenticationserver.model.JwtResponse;
@@ -35,7 +36,7 @@ public class JwtAuthenticationController {
     private UserService userService;
 
     @PostMapping(value = "/authenticate")
-    public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws UserNotExistsException {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 

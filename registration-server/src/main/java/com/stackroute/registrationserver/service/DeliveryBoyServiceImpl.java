@@ -2,6 +2,8 @@ package com.stackroute.registrationserver.service;
 
 import com.stackroute.registrationserver.domain.DeliveryBoyProfile;
 import com.stackroute.registrationserver.domain.DeliveryBoys;
+import com.stackroute.registrationserver.exceptions.EntityAlreadyExistsException;
+import com.stackroute.registrationserver.exceptions.EntityNotExistsException;
 import com.stackroute.registrationserver.repository.DeliveryBoyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,27 +22,42 @@ public class DeliveryBoyServiceImpl implements DeliveryBoyService {
     }
 
     @Override
-    public DeliveryBoyProfile saveDeliveryBoy(DeliveryBoys deliveryBoys) throws Exception {
+    public DeliveryBoyProfile saveDeliveryBoy(DeliveryBoys deliveryBoys) throws EntityAlreadyExistsException {
 
-        System.out.println(deliveryBoys);
-
-        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
-
-        DeliveryBoyProfile savedDeliveryBoyDetails = deliveryBoyRepository.save(deliveryBoyProfile);
-        if (savedDeliveryBoyDetails == null)
-            throw new Exception("User Already Exists");
-        return savedDeliveryBoyDetails;
+        if(deliveryBoyRepository.existsById(deliveryBoys.getUsername()))
+        {
+            throw new EntityAlreadyExistsException("DeliveryBoy Already Exists");
+        }
+        else {
+            System.out.println(deliveryBoys);
+            DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(), deliveryBoys.getEmail(), deliveryBoys.getRole(), deliveryBoys.getName(), deliveryBoys.getMobile(), deliveryBoys.getAddress(), deliveryBoys.getLicenseNo(), deliveryBoys.getLicenseName());
+            DeliveryBoyProfile savedDeliveryBoyDetails = deliveryBoyRepository.save(deliveryBoyProfile);
+            return savedDeliveryBoyDetails;
+        }
     }
 
     @Override
-    public Optional<DeliveryBoyProfile> displayDeliveryBoy(String username) throws Exception {
-        return deliveryBoyRepository.findById(username);
+    public Optional<DeliveryBoyProfile> displayDeliveryBoy(String username) throws EntityNotExistsException {
+        if(deliveryBoyRepository.existsById(username))
+        {
+            return deliveryBoyRepository.findById(username);
+        }
+        else {
+
+            throw new EntityNotExistsException("DeliveryBoy Not Exists");
+        }
     }
 
     @Override
-    public DeliveryBoyProfile updateDeliveryBoy(DeliveryBoys deliveryBoys) throws Exception {
-        DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(),deliveryBoys.getEmail(),deliveryBoys.getRole(),deliveryBoys.getName(),deliveryBoys.getMobile(),deliveryBoys.getAddress(),deliveryBoys.getLicenseNo(),deliveryBoys.getLicenseName());
-        return deliveryBoyRepository.save(deliveryBoyProfile);
+    public DeliveryBoyProfile updateDeliveryBoy(DeliveryBoys deliveryBoys) throws EntityNotExistsException {
+        if(!deliveryBoyRepository.existsById(deliveryBoys.getUsername()))
+        {
+            throw new EntityNotExistsException("DeliveryBoy Not Exists");
+        }
+        else {
+            DeliveryBoyProfile deliveryBoyProfile = new DeliveryBoyProfile(deliveryBoys.getUsername(), deliveryBoys.getEmail(), deliveryBoys.getRole(), deliveryBoys.getName(), deliveryBoys.getMobile(), deliveryBoys.getAddress(), deliveryBoys.getLicenseNo(), deliveryBoys.getLicenseName());
+            return deliveryBoyRepository.save(deliveryBoyProfile);
+        }
     }
 
 }

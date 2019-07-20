@@ -2,6 +2,8 @@ package com.stackroute.registrationserver.controller;
 
 import com.stackroute.rabbitmq.model.RestaurantMQ;
 import com.stackroute.registrationserver.domain.*;
+import com.stackroute.registrationserver.exceptions.EntityAlreadyExistsException;
+import com.stackroute.registrationserver.exceptions.EntityNotExistsException;
 import com.stackroute.registrationserver.service.CharityService;
 import com.stackroute.registrationserver.service.DeliveryBoyService;
 import com.stackroute.registrationserver.service.RabbitService;
@@ -31,22 +33,12 @@ public class RegistrationController {
     private RabbitService rabbitService;
 
     @PostMapping("restaurant-profile")
-    public ResponseEntity<RestaurantProfile> saveRestaurant(@RequestBody Restaurants restaurant) throws Exception {
+    public ResponseEntity<RestaurantProfile> saveRestaurant(@RequestBody Restaurants restaurant) throws EntityAlreadyExistsException {
+
         ResponseEntity responseEntity;
-
-        try {
-
-            RestaurantProfile returnRestaurant = restaurantService.saveRestaurant(restaurant);
-            responseEntity = new ResponseEntity<RestaurantProfile>(returnRestaurant, HttpStatus.CREATED);
-
-            rabbitService.sendToRestaurantRabbitMq(restaurant);
-
-        } catch (Exception e) {
-
-            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
-
-        }
-
+        RestaurantProfile returnRestaurant = restaurantService.saveRestaurant(restaurant);
+        responseEntity = new ResponseEntity<RestaurantProfile>(returnRestaurant, HttpStatus.CREATED);
+        rabbitService.sendToRestaurantRabbitMq(restaurant);
         return responseEntity;
     }
 //    @GetMapping("restaurant-profile")
@@ -68,57 +60,32 @@ public class RegistrationController {
 //    }
 
     @GetMapping("restaurant-profile")
-    public ResponseEntity<RestaurantProfile> displayRestaurantByUsername(@RequestParam String username) throws Exception
+    public ResponseEntity<RestaurantProfile> displayRestaurantByUsername(@RequestParam String username) throws EntityNotExistsException
     {
         ResponseEntity responseEntity;
-
-        try {
-            RestaurantProfile restaurant = restaurantService.displayRestaurantByUsername(username);
-            return new ResponseEntity<RestaurantProfile>(restaurant, HttpStatus.OK);
-        } catch (Exception ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-            ex.getMessage();
-        }
-        return responseEntity;
+        RestaurantProfile restaurant = restaurantService.displayRestaurantByUsername(username);
+        return new ResponseEntity<RestaurantProfile>(restaurant, HttpStatus.OK);
     }
 
     @PutMapping("restaurant-profile")
-    public ResponseEntity updateRestaurant(@RequestBody Restaurants restaurant)
-
+    public ResponseEntity updateRestaurant(@RequestBody Restaurants restaurant) throws EntityNotExistsException
     {
-
         ResponseEntity responseEntity;
-        try
-        {
-            responseEntity = new ResponseEntity(restaurantService.updateRestaurant(restaurant),HttpStatus.CREATED);
-            rabbitService.sendToRestaurantUpdateRabbitMq(restaurant);
-
-            return responseEntity;
-        }
-        catch(Exception e)
-        {
-            return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-        }
+        responseEntity = new ResponseEntity(restaurantService.updateRestaurant(restaurant),HttpStatus.CREATED);
+        rabbitService.sendToRestaurantUpdateRabbitMq(restaurant);
+        return responseEntity;
     }
 
     @PostMapping("charity-profile")
-    public ResponseEntity<CharityProfile> saveCharity(@RequestBody Charities charity) throws Exception {
+    public ResponseEntity<CharityProfile> saveCharity(@RequestBody Charities charity) throws EntityAlreadyExistsException {
+
         ResponseEntity responseEntity;
-        try {
-
-            CharityProfile returnCharity = charityService.saveCharity(charity);
-            responseEntity = new ResponseEntity<CharityProfile>(returnCharity, HttpStatus.CREATED);
-
-            rabbitService.sendToCharityRabbitMq(charity);
-
-        } catch (Exception e) {
-
-            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
-
-        }
-
+        CharityProfile returnCharity = charityService.saveCharity(charity);
+        responseEntity = new ResponseEntity<CharityProfile>(returnCharity, HttpStatus.CREATED);
+        rabbitService.sendToCharityRabbitMq(charity);
         return responseEntity;
     }
+
 //    @GetMapping("charity-profile")
 //    public ResponseEntity<List<CharityProfile>> displayCharity()
 //    {
@@ -138,75 +105,43 @@ public class RegistrationController {
 //    }
 
     @GetMapping("charity-profile")
-    public ResponseEntity<CharityProfile> displayCharityByUsername(@RequestParam String username) throws Exception
+    public ResponseEntity<CharityProfile> displayCharityByUsername(@RequestParam String username) throws EntityNotExistsException
     {
         ResponseEntity responseEntity;
-
-        try {
-            CharityProfile charity = charityService.displayCharityByUsername(username);
-            return new ResponseEntity<CharityProfile>(charity, HttpStatus.OK);
-        } catch (Exception ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-            ex.getMessage();
-        }
-        return responseEntity;
+        CharityProfile charity = charityService.displayCharityByUsername(username);
+        return new ResponseEntity<CharityProfile>(charity, HttpStatus.OK);
     }
 
     @PutMapping("charity-profile")
-    public ResponseEntity updateCharity(@RequestBody Charities charity)
+    public ResponseEntity updateCharity(@RequestBody Charities charity) throws EntityNotExistsException
     {
-        try
-        {
-            rabbitService.sendToCharityUpdateRabbitMq(charity);
-            return new ResponseEntity(charityService.updateCharity(charity),HttpStatus.CREATED);
-
-        }
-        catch (Exception e)
-        {
-            return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-        }
+        rabbitService.sendToCharityUpdateRabbitMq(charity);
+        return new ResponseEntity(charityService.updateCharity(charity),HttpStatus.CREATED);
     }
 
     @PostMapping("deliveryBoy-profile")
-    public ResponseEntity<DeliveryBoyProfile> saveDeliveryBoy(@RequestBody DeliveryBoys deliveryBoys) throws Exception {
+    public ResponseEntity<DeliveryBoyProfile> saveDeliveryBoy(@RequestBody DeliveryBoys deliveryBoys) throws EntityAlreadyExistsException {
         ResponseEntity responseEntity;
-        try {
-            DeliveryBoyProfile returnDeliveryBoy = deliveryBoyService.saveDeliveryBoy(deliveryBoys);
-            responseEntity = new ResponseEntity<DeliveryBoyProfile>(returnDeliveryBoy, HttpStatus.CREATED);
-            rabbitService.sendToDeliveryBoyMQ(deliveryBoys);
-        } catch (Exception e) {
-            responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
-        }
-
+        DeliveryBoyProfile returnDeliveryBoy = deliveryBoyService.saveDeliveryBoy(deliveryBoys);
+        responseEntity = new ResponseEntity<DeliveryBoyProfile>(returnDeliveryBoy, HttpStatus.CREATED);
+        rabbitService.sendToDeliveryBoyMQ(deliveryBoys);
         return responseEntity;
     }
 
     @GetMapping("deliveryBoy-profile")
-    public ResponseEntity<DeliveryBoyProfile> displayDeliveryBoy(@RequestParam String username)
+    public ResponseEntity<DeliveryBoyProfile> displayDeliveryBoy(@RequestParam String username) throws EntityNotExistsException
     {
         ResponseEntity responseEntity;
-
-        try{
-            responseEntity=new ResponseEntity(deliveryBoyService.displayDeliveryBoy(username),HttpStatus.CREATED);
-        }
-        catch (Exception e){
-            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-        }
+        responseEntity=new ResponseEntity(deliveryBoyService.displayDeliveryBoy(username),HttpStatus.CREATED);
         return responseEntity;
     }
 
     @PutMapping("deliveryBoy-profile")
-    public ResponseEntity updateDeliveryBoy(@RequestBody DeliveryBoys deliveryBoys)
+    public ResponseEntity updateDeliveryBoy(@RequestBody DeliveryBoys deliveryBoys) throws EntityNotExistsException
     {
         ResponseEntity responseEntity;
-        try{
-            responseEntity=new ResponseEntity(deliveryBoyService.updateDeliveryBoy(deliveryBoys),HttpStatus.CREATED);
-            rabbitService.sendToDeliveryBoyUpdateMQ(deliveryBoys);
-        }
-        catch (Exception e)
-        {
-            responseEntity=new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-        }
+        responseEntity=new ResponseEntity(deliveryBoyService.updateDeliveryBoy(deliveryBoys),HttpStatus.CREATED);
+        rabbitService.sendToDeliveryBoyUpdateMQ(deliveryBoys);
         return responseEntity;
     }
 }

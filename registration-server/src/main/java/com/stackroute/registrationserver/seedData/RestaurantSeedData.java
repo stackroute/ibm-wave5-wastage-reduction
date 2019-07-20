@@ -50,8 +50,8 @@ public class RestaurantSeedData implements ApplicationListener<ContextRefreshedE
                 restaurants.setRole(workbook.getSheetAt(1).getRow(i).getCell(j + 9).toString());
                 System.out.println(restaurants);
 
-                registrationController.updateRestaurant(restaurants);
-                rabbitService.sendToRestaurantRabbitMq(restaurants);
+                registrationController.saveRestaurant(restaurants);
+                rabbitService.sendToRestaurantUpdateRabbitMq(restaurants);
             }
 
             file.close();

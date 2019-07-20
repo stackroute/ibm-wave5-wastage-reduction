@@ -55,8 +55,8 @@ public class DeliverySeedData implements ApplicationListener<ContextRefreshedEve
 
                 System.out.println(deliveryBoys);
 
-                registrationController.updateDeliveryBoy(deliveryBoys);
-                rabbitService.sendToDeliveryBoyMQ(deliveryBoys);
+                registrationController.saveDeliveryBoy(deliveryBoys);
+                rabbitService.sendToDeliveryBoyUpdateMQ(deliveryBoys);
 
             }
 
