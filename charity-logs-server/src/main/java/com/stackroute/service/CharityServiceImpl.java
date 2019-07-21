@@ -5,11 +5,11 @@ import com.stackroute.rabbitmq.model.CharityStatus;
 import com.stackroute.rabbitmq.model.RatedRestaurant;
 import com.stackroute.repository.CharityRepository;
 import com.stackroute.repository.CharityLiveStatusRepository;
+import com.stackroute.repository.CharitySeedRepository;
 import com.stackroute.repository.SequenceRepository;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,8 @@ public class CharityServiceImpl implements CharityService {
     @Autowired
     CharityLiveStatusRepository charityLiveStatusRepository;
 
+    @Autowired
+    CharitySeedRepository charitySeedRepository;
 
     @Autowired
     SendRating sendRating;
@@ -64,6 +66,12 @@ public class CharityServiceImpl implements CharityService {
     @Override
     public CharityLiveStatus fetchCharityStatus(String username) {
         return charityLiveStatusRepository.findById(username).get();
+    }
+
+    @Override
+    public List<CharitySeed> displayCharitySeeder() {
+
+        return charitySeedRepository.findAll();
     }
 
     @Override

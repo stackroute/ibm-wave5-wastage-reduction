@@ -49,5 +49,11 @@ public class CharityController {
         responseEntity=new ResponseEntity(charityService.saveRating(rating), HttpStatus.CREATED);
         return  responseEntity;
     }
+    @GetMapping("charity-slider")
+    public ResponseEntity displayCharitySlider()
+    {
+        return  new ResponseEntity(charityService.displayCharitySeeder(),HttpStatus.OK);
+    }
+
 
 }
