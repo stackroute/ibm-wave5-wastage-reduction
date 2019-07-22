@@ -4,9 +4,9 @@ com/stackroute/rabbitmq/model/DeliveryBoyList.class
 com/stackroute/domain/DeliveryBoy.class
 com/stackroute/rabbitmq/model/DeliveryBoyStatus.class
 com/stackroute/rabbitmq/model/Charity.class
+com/stackroute/config/RabbitMQConfig.class
 com/stackroute/domain/Logs.class
 com/stackroute/service/DeliveryBoyServiceImpl.class
-com/stackroute/config/RabbitMQConfig.class
 com/stackroute/repository/DeliveryBoyLiveStatusRepository.class
 com/stackroute/domain/Charity.class
 com/stackroute/rabbitmq/model/Restaurant.class

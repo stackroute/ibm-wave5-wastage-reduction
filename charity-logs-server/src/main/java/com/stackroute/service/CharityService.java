@@ -19,5 +19,5 @@ public interface CharityService {
 
     public List<CharitySeed> displayCharitySeeder();
 
-    public String saveRating(Rating rating);
+    public Charity saveRating(Rating rating);
 }

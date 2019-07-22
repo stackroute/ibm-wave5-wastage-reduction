@@ -75,7 +75,7 @@ public class CharityServiceImpl implements CharityService {
     }
 
     @Override
-    public String saveRating(Rating rating) {
+    public Charity saveRating(Rating rating) {
         Charity charity = charityRepository.findById(rating.getUsername()).get();
         List<Logs> logsList = charity.getLogs();
         for (int i = 0; i < logsList.size(); i++){
@@ -93,7 +93,6 @@ public class CharityServiceImpl implements CharityService {
             }
         }
         charity.setLogs(logsList);
-        charityRepository.save(charity);
-        return null;
+        return charityRepository.save(charity);
     }
 }
