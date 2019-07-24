@@ -16,8 +16,8 @@ com/stackroute/rabbitmq/model/DeliveryBoyMQ$DeliveryBoyMQBuilder.class
 com/stackroute/authenticationserver/AuthenticationServerApplication.class
 com/stackroute/authenticationserver/model/JwtResponse.class
 com/stackroute/authenticationserver/config/JwtAuthenticationEntryPoint.class
-com/stackroute/authenticationserver/exception/GlobalException.class
 com/stackroute/authenticationserver/service/UserService.class
+com/stackroute/authenticationserver/exception/GlobalException.class
 com/stackroute/rabbitmq/model/Users$UsersBuilder.class
 com/stackroute/rabbitmq/model/RestaurantMQ$RestaurantMQBuilder.class
 com/stackroute/rabbitmq/model/CharityMQ$CharityMQBuilder.class
