@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  wastage-ui:
-    image: wastage-ui:1.0
-    build: wastage-ui/
+  feedol-ui:
+    image: feedol-ui:1.0
+    build: feedol-ui/
     restart: always
     network_mode: "host"
     hostname: localhost
