@@ -49,6 +49,9 @@ export class CharitySliderComponent implements OnInit {
   }
 
   getAllCharities() {
+	return this.http.get('http://13.234.235.193:8000/charity-logs-service/api/v1/charity-slider')
+  }
+}
     return this.http.get('http://localhost:8080/charity-logs-service/api/v1/charity-slider')
   }
 
