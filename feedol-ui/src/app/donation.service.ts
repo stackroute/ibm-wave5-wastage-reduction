@@ -37,7 +37,7 @@ saveDeliveryBoy(deliveryBoy){
 
  updateDeliveryBoyActivity(details){
   var url= "http://13.234.235.193:8080/routing-service/updateDeliveryBoyDetails";
-  console.log("Updating Delivery Boy Details With Username : ", details.deliveryBoyId , " And Location : " , details.ocation);
+  console.log("Updating Delivery Boy Details With Username : ", details.deliveryBoyId , " And Location : " , details.location);
   return this.http.put<any>(url,details);
  }
  
@@ -72,7 +72,7 @@ saveDeliveryBoy(deliveryBoy){
   }
  
  fetchDeliveryBoyRoute(username){
-   var url= `http://localhost:8080/deliveryboy-service/api/v1/deliveryBoy-status/?username=${username}`;
+   var url= `http://13.234.235.193:8080/deliveryboy-service/api/v1/deliveryBoy-status/?username=${username}`;
    console.log("Fetching Delivery Boy's Route Status With Username : ", username);
    return this.http.get<any>(url);
   }

@@ -16,7 +16,6 @@ com/stackroute/registrationserver/domain/DeliveryBoyProfile.class
 com/stackroute/registrationserver/repository/CharityRepository.class
 com/stackroute/registrationserver/config/RabbitMqConfig.class
 com/stackroute/registrationserver/domain/DeliveryBoyProfile$DeliveryBoyProfileBuilder.class
-com/stackroute/registrationserver/seedData/DeliverySeedData.class
 com/stackroute/registrationserver/domain/Restaurants.class
 com/stackroute/registrationserver/repository/RestaurantRepository.class
 com/stackroute/rabbitmq/model/DeliveryBoyMQ$DeliveryBoyMQBuilder.class
@@ -28,7 +27,6 @@ com/stackroute/registrationserver/service/RabbitService.class
 com/stackroute/registrationserver/exceptions/GlobalException.class
 com/stackroute/registrationserver/service/DeliveryBoyService.class
 com/stackroute/registrationserver/domain/Charities.class
-com/stackroute/registrationserver/seedData/CharitySeedData.class
 com/stackroute/registrationserver/domain/CharityProfile$CharityProfileBuilder.class
 com/stackroute/rabbitmq/model/RestaurantMQ$RestaurantMQBuilder.class
 com/stackroute/registrationserver/service/DeliveryBoyServiceImpl.class

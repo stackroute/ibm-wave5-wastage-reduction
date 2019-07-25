@@ -51,4 +51,6 @@ public interface DonationService {
 
     public void startSending();
 
+    public void createRelations();
+
 }

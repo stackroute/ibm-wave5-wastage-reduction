@@ -81,7 +81,7 @@
 
                           <div class="form-group row">
                             <div class="col-sm-4 col-form-label">
-                            <label class="lbl" style="color: #343A40" [(ngModel)]="updatedLocation">Location</label>
+                            <label class="lbl" style="color: #343A40" class="form-control" name="updatedLocation" [(ngModel)]="updatedLocation">Location</label>
                           </div>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" placeholder="Location">
@@ -101,7 +101,7 @@
           
               </div>
 </div>
-<div class="container w3-padding-64" id="charityLogs">
+<div class="container w3-padding-64" id="charityLogs" *ngIf="deliveryBoyLogs!=undefined">
 <h1 class="w3-center"><b><i class="fa fa-list" aria-hidden="true"></i>&nbsp;<span class="w3-text-yellow"></span>Logs</b></h1>
 <!-- <h6 class="hd w3-center"><span class="w3-text-yellow">Delivery</span> Log</h6> -->
 <div class="w3-padding-64" style="margin-top: -10px" >

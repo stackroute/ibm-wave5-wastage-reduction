@@ -45,7 +45,7 @@ public class CharityListener {
                     double restaurantLat = Double.parseDouble(restaurantLocation[0]);
                     double restaurantLon = Double.parseDouble(restaurantLocation[1]);
                     double distance = getDistanceFromLatLonInKm(charityLat,charityLon,restaurantLat,restaurantLon);
-                    charityRepository.createRestaurantCharityRelation(restaurant.getRestaurantId(),charity.getCharityId(),distance,"no");
+//                    charityRepository.createRestaurantCharityRelation(restaurant.getRestaurantId(),charity.getCharityId(),distance,"no");
                 }
                 List<DeliveryBoy> deliveryBoyList = deliveryBoyRepository.fetchDeliveryBoys();
                 for (int j = 0; j < deliveryBoyList.size(); j++){
@@ -54,7 +54,7 @@ public class CharityListener {
                     double deliveryBoyLat = Double.parseDouble(deliveryBoyLocation[0]);
                     double deliveryBoyLon = Double.parseDouble(deliveryBoyLocation[1]);
                     double distance = getDistanceFromLatLonInKm(charityLat,charityLon,deliveryBoyLat,deliveryBoyLon);
-                    deliveryBoyRepository.createDeliveryBoyCharityRelation(deliveryBoy.getDeliveryBoyId(),charity.getCharityId(),distance);
+//                    deliveryBoyRepository.createDeliveryBoyCharityRelation(deliveryBoy.getDeliveryBoyId(),charity.getCharityId(),distance);
 
                 }
             }

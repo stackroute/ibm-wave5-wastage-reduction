@@ -7,6 +7,7 @@ import com.stackroute.repository.CharityRepository;
 import com.stackroute.repository.DeliveryBoyRepository;
 import com.stackroute.repository.RestaurantRepository;
 import com.stackroute.service.rabbitMQservice.SendOutput;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -102,7 +103,7 @@ public class DonationServiceImpl implements DonationService
 
     @Override @Transactional
     public String removeRestaurantCharityRelation(String charityId) {
-        charityRepository.removeRestaurantCharityRelation(charityId);
+        charityRepository.removeDonatesToRelation();
         return "Successfully Deleted All Incoming Relations for Charity with Id -> " + charityId;
     }
 
@@ -144,6 +145,8 @@ public class DonationServiceImpl implements DonationService
 
     @Override @Transactional
     public String startRouting(){
+        createRelations();
+
         System.out.println("\n------------INSIDE ROUTING ALGORITHM----------\n");
 
         System.out.println("--------RESTAURANTS ALLOCATION--------\n");
@@ -159,7 +162,7 @@ public class DonationServiceImpl implements DonationService
             double precedence = charity.getPrecedence();
             System.out.println("Food Requirement = " + foodRequirement + " Food Available = " + foodAvailable + "\n");
             List<Restaurant> restaurantList = restaurantRepository.getSortedRestaurantsByDistanceAndAvailability((charity.getCharityId()));
-            System.out.println("Fetched Restaurants For Charity : " + charity.getCharityName() + " Within 5KM Radius And Sorted By Distance And Restaurant's Availability\n");
+            System.out.println("Fetched Restaurants For Charity : " + charity.getCharityName() + " Within 10KM Radius And Sorted By Distance And Restaurant's Availability\n");
             for (int j = 0; j < restaurantList.size(); j++){
                 Restaurant restaurant = restaurantList.get(j);
                 System.out.println("Restaurant { " + restaurant.getRestaurantId() + " " + restaurant.getRestaurantName() + " }");
@@ -234,6 +237,10 @@ public class DonationServiceImpl implements DonationService
         System.out.println(" Removed All picks from Relations for Delivery Boys");
         deliveryBoyRepository.removeDeliversToRelation();
         System.out.println(" Removed All delivers to Relations for Delivery Boys");
+        charityRepository.removeDonatesToRelation();
+        System.out.println(" Removed All donates to Relations between Restaurants and Charities");
+        deliveryBoyRepository.removeLinkedToRelation();
+        System.out.println(" Removed All Linked To Relations for Delivery Boys");
         return "Reset of stats Successful";
     }
 
@@ -249,5 +256,62 @@ public class DonationServiceImpl implements DonationService
     public String[] sendToCharity(String charityId) {
         System.out.println("--" + charityRepository.sendDetailsToCharity(charityId));
         return charityRepository.sendDetailsToCharity(charityId);
+    }
+
+    @Override
+    public void createRelations() {
+        System.out.println("CREATING RELATIONS \n");
+        List<Restaurant> restaurantList = restaurantRepository.fetchRestaurants();
+        for (int i = 0; i < restaurantList.size(); i++) {
+            Restaurant restaurant = restaurantList.get(i);
+            String[] restaurantLocation = restaurant.getLocation().split(",");
+            double restaurantLat = Double.parseDouble(restaurantLocation[0]);
+            double restaurantLon = Double.parseDouble(restaurantLocation[1]);
+            List<Charity> charityList = charityRepository.fetchCharities();
+            for (int j = 0; j < charityList.size(); j++) {
+                Charity charity = charityList.get(j);
+                String[] charityLocation = charity.getLocation().split(",");
+                double charityLat = Double.parseDouble(charityLocation[0]);
+                double charityLon = Double.parseDouble(charityLocation[1]);
+                double distance = getDistanceFromLatLonInKm(restaurantLat, restaurantLon, charityLat, charityLon);
+                charityRepository.createRestaurantCharityRelation(restaurant.getRestaurantId(), charity.getCharityId(), distance, "no");
+            }
+            List<DeliveryBoy> deliveryBoyList = deliveryBoyRepository.fetchDeliveryBoys();
+            for (int j = 0; j < deliveryBoyList.size(); j++) {
+                DeliveryBoy deliveryBoy = deliveryBoyList.get(j);
+                String[] deliveryBoyLocation = deliveryBoy.getLocation().split(",");
+                double deliveryBoyLat = Double.parseDouble(deliveryBoyLocation[0]);
+                double deliveryBoyLon = Double.parseDouble(deliveryBoyLocation[1]);
+                double distance = getDistanceFromLatLonInKm(restaurantLat, restaurantLon, deliveryBoyLat, deliveryBoyLon);
+                deliveryBoyRepository.createRestaurantDeliveryBoyRelation(restaurant.getRestaurantId(), deliveryBoy.getDeliveryBoyId(), distance);
+            }
+        }
+
+        List<Charity> charityList = charityRepository.fetchCharities();
+        for (int i = 0; i < charityList.size(); i++) {
+            Charity charity = charityList.get(i);
+            String[] charityLocation = charity.getLocation().split(",");
+            double charityLat = Double.parseDouble(charityLocation[0]);
+            double charityLon = Double.parseDouble(charityLocation[1]);
+            List<DeliveryBoy> deliveryBoyList = deliveryBoyRepository.fetchDeliveryBoys();
+            for (int j = 0; j < deliveryBoyList.size(); j++){
+                DeliveryBoy deliveryBoy = deliveryBoyList.get(j);
+                String[] deliveryBoyLocation = deliveryBoy.getLocation().split(",");
+                double deliveryBoyLat = Double.parseDouble(deliveryBoyLocation[0]);
+                double deliveryBoyLon = Double.parseDouble(deliveryBoyLocation[1]);
+                double distance = getDistanceFromLatLonInKm(charityLat,charityLon,deliveryBoyLat,deliveryBoyLon);
+                deliveryBoyRepository.createDeliveryBoyCharityRelation(deliveryBoy.getDeliveryBoyId(),charity.getCharityId(),distance);
+
+            }
+        }
+    }
+
+    double getDistanceFromLatLonInKm(double lat1, double lon1, double lat2, double lon2) {
+        double R = 6371; // Radius of the earth in km
+        double dLat = Math.toRadians(lat2 - lat1);  // conversion to radians
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.pow(Math.sin(dLat / 2), 2) + Math.pow(Math.sin(dLon / 2), 2) * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2));
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return R * c; // Distance in km
     }
 }

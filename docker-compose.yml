@@ -54,6 +54,7 @@ services:
       - eureka-server
       - mysql
       - rabbitmq
+      - routing-service
     restart: always
     network_mode: host
     hostname: localhost
